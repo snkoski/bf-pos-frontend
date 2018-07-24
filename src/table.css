@@ -1,0 +1,23 @@
+.rect {
+  fill: rgb(0,0,255);
+  strokeWidth: 3;
+  stroke: rgb(0,0,0);
+}
+
+.anh1 {
+  color: red;
+}
+
+.circle {
+  fill-opacity: 0.3;
+}
+
+.rect.small {
+  fill: pink;
+  rx: 20;
+  ry: 20;
+}
+
+.ui.grid>* {
+  padding: 1px !important
+}
