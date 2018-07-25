@@ -1,10 +1,26 @@
-import { STATIC_TABLE_FETCH_SUCCESS } from './types';
+import { STATIC_TABLE_FETCH_SUCCESS, SEAT_TABLE } from './types';
+import { patchFetch } from "../adapters/adapters";
 
 export const staticTableFetch = (tables) => {
   return {
     type: STATIC_TABLE_FETCH_SUCCESS,
     static_tables: tables
   }
+}
+
+export const seatTable = (id) => {
+  return {
+    type: SEAT_TABLE,
+    id: id,
+    occupied: true
+  }
+}
+
+export const seatTableFetch = (id) => {
+  return(dispatch) => {
+   patchFetch("http://localhost:3000/api/v1/static_tables/", id, { occupied: true })
+  .then(result => dispatch(seatTable(id)))
+}
 }
 
 export const staticTablesFetchData = (url) => {

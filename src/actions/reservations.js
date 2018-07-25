@@ -1,4 +1,5 @@
 import { RESERVATION_HAS_ERRORED, RESERVATION_IS_LOADING, RESERVATIONS_FETCH_DATA_SUCCESS, NEW_RESERVATION, CANCEL_RESERVATION } from "./types";
+import { patchFetch } from "../adapters/adapters";
 
 export const reservationsHasErrored = (bool) => {
   return {
@@ -27,11 +28,11 @@ export const createReservation = (reservation) => {
     reservations: reservation
   };
 }
-export const cancelReservation = (id ,bool) => {
+export const cancelReservation = (id) => {
   return {
     type: CANCEL_RESERVATION,
     id: id,
-    cancelled: bool
+    cancelled: true
   };
 }
 
@@ -104,18 +105,9 @@ export const newReservation = (reservation) => {
 
 
 export const cancelReservationFetch = (id) => {
-
   return(dispatch) => {
-    fetch("http://localhost:3000/api/v1/reservations/" + id, {
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    method: 'PATCH',
-    body: JSON.stringify( { cancelled: true } )
-  })
-  .then(resp => resp.json())
-  .then(result => {dispatch(cancelReservation(id, true))})
+   patchFetch("http://localhost:3000/api/v1/reservations/", id, { cancelled: true })
+  .then(result => dispatch(cancelReservation(id)))
 }
 }
 // export const deleteReservation = (id) => {
@@ -125,3 +117,14 @@ export const cancelReservationFetch = (id) => {
 //       .then((reservation) => dispatch(cancelReservation(reservation)))
 //   };
 // }
+
+
+// fetch("http://localhost:3000/api/v1/reservations/" + id, {
+//   headers: {
+//     'Accept': 'application/json',
+//     'Content-Type': 'application/json'
+//   },
+//   method: 'PATCH',
+//   body: JSON.stringify( { cancelled: true } )
+// })
+// .then(resp => resp.json())
