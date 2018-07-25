@@ -1,24 +1,19 @@
 import React from 'react';
-import { staticTablesFetchData, seatTableFetch } from '../actions/tables';
+import { staticTablesFetchData, seatTableFetch, tablesFetchData, newTableFetch } from '../actions/tables';
 import { connect } from 'react-redux';
 
 class TableSvg extends React.Component {
-  constructor(props) {
-    super(props)
 
-    this.state = {
-
-    }
-
-  }
   componentDidMount() {
-    this.props.staticTablesFetchData("http://localhost:3000/api/v1/static_tables")
+    this.props.staticTablesFetchData("http://localhost:3000/api/v1/static_tables");
+    this.props.tablesFetchData("http://localhost:3000/api/v1/tables")
   }
 
 
   handleClick = (e) => {
   console.log(e.target.id)
   this.props.seatTableFetch(e.target.id)
+
   }
 
   render() {
@@ -54,7 +49,8 @@ class TableSvg extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    static_tables: state.static_tables
+    static_tables: state.static_tables,
+    tables: state.tables
   };
 };
 //
@@ -64,4 +60,4 @@ const mapStateToProps = (state) => {
 //   };
 // };
 
-export default connect(mapStateToProps,{ seatTableFetch, staticTablesFetchData })(TableSvg);
+export default connect(mapStateToProps,{ seatTableFetch, staticTablesFetchData, newTableFetch, tablesFetchData })(TableSvg);

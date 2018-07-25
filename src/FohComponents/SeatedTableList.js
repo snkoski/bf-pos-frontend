@@ -10,9 +10,9 @@ class SeatedTableList extends React.Component {
         <h1>Seated Tables</h1>
         {this.props.static_tables.map(table => {
           if (table.occupied === true) {
-            return <div>
-              <p> Table {table.id}</p>
-              <button onClick={() => {this.props.clearTableFetch(table.id)}}>clear table</button>
+            return <div key={table.id + 'div'}>
+              <p key={table.id}> Table {table.id}</p>
+              <button key={table.id + table.occupied} onClick={() => {this.props.clearTableFetch(table.id)}}>clear table</button>
             </div>
           }
         })}

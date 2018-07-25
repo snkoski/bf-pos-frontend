@@ -1,5 +1,5 @@
 import { RESERVATION_HAS_ERRORED, RESERVATION_IS_LOADING, RESERVATIONS_FETCH_DATA_SUCCESS, NEW_RESERVATION, CANCEL_RESERVATION } from "./types";
-import { patchFetch } from "../adapters/adapters";
+import { patchFetch, createFetch } from "../adapters/adapters";
 
 export const reservationsHasErrored = (bool) => {
   return {
@@ -70,37 +70,43 @@ export const reservationsFetchData = (url) => {
   };
 }
 
-export const newReservation = (reservation) => {
-
-  const options = {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(reservation)
-  }
-
+// export const newReservation = (reservation) => {
+//
+//   const options = {
+//     method: "POST",
+//     headers: {
+//       Accept: "application/json",
+//       "Content-Type": "application/json"
+//     },
+//     body: JSON.stringify(reservation)
+//   }
+//
+//   return(dispatch) => {
+//     dispatch(reservationsIsLoading(true));
+//
+//     fetch("http://localhost:3000/api/v1/reservations", options)
+//
+//     .then((response) => {
+//       if(!response.ok) {
+//         throw Error(response.statusText);
+//       }
+//       dispatch(reservationsIsLoading(false));
+//
+//       return response;
+//     })
+//
+//       .then(response => response.json())
+//        .then(result => {
+//          console.log(result)
+//         dispatch(createReservation(result))
+//       })
+//   };
+// }
+export const newReservationFetch = (reservation) => {
   return(dispatch) => {
-    dispatch(reservationsIsLoading(true));
-
-    fetch("http://localhost:3000/api/v1/reservations", options)
-
-    .then((response) => {
-      if(!response.ok) {
-        throw Error(response.statusText);
-      }
-      dispatch(reservationsIsLoading(false));
-
-      return response;
-    })
-
-      .then(response => response.json())
-       .then(result => {
-         console.log(result)
-        dispatch(createReservation(result))
-      })
-  };
+    createFetch("http://localhost:3000/api/v1/reservations", reservation)
+    .then(result => dispatch(createReservation(result)))
+  }
 }
 
 

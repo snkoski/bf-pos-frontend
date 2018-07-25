@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { newReservation } from "../actions/reservations";
+import { newReservationFetch } from "../actions/reservations";
 
 class ReservationForm extends React.Component {
 
@@ -14,7 +14,7 @@ class ReservationForm extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault()
     console.log(this.props);
-    this.props.newReservation(this.state)
+    this.props.newReservationFetch(this.state)
     let name = `Reservation created for ${this.state.guest_name}`
     alert(name)
     this.props.history.goBack()
@@ -72,4 +72,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { newReservation })(ReservationForm);
+export default connect(mapStateToProps, { newReservationFetch })(ReservationForm);

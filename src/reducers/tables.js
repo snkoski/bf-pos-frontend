@@ -1,6 +1,7 @@
-import { STATIC_TABLE_FETCH_SUCCESS, SEAT_TABLE, CLEAR_TABLE } from "../actions/types";
+import { STATIC_TABLE_FETCH_SUCCESS, SEAT_TABLE, CLEAR_TABLE, TABLE_FETCH_SUCCESS, CREATE_TABLE } from "../actions/types";
 
 export function static_tables(state = [], action) {
+
   switch (action.type) {
     case STATIC_TABLE_FETCH_SUCCESS:
       return action.static_tables;
@@ -23,6 +24,20 @@ export function static_tables(state = [], action) {
       })
       return newStates;
 
+    default:
+      return state;
+  }
+}
+
+export function tables(state=[], action) {
+
+  switch (action.type) {
+
+    case TABLE_FETCH_SUCCESS:
+      return action.tables;
+
+    case CREATE_TABLE:
+      return [...state, action.tables];
     default:
       return state;
   }

@@ -9,7 +9,7 @@ class OpenTableList extends React.Component {
         <h1>Open Tables</h1>
         {this.props.static_tables.map(table => {
           if (table.occupied === false) {
-            return <p> Table {table.id}</p>
+            return <p key={table.id}> Table {table.id}</p>
           }
         })}
       </div>

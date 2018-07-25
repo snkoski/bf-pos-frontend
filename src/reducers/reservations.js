@@ -21,8 +21,8 @@ export function reservationsIsLoading(state = false, action) {
 export function reservations(state = [], action) {
   switch (action.type) {
     case NEW_RESERVATION:
-  
-      return [...state,action.reservations];
+
+      return [...state, action.reservations];
 
     case RESERVATIONS_FETCH_DATA_SUCCESS:
 
