@@ -1,4 +1,4 @@
-import { STATIC_TABLE_FETCH_SUCCESS, SEAT_TABLE } from './types';
+import { STATIC_TABLE_FETCH_SUCCESS, SEAT_TABLE, CLEAR_TABLE } from './types';
 import { patchFetch } from "../adapters/adapters";
 
 export const staticTableFetch = (tables) => {
@@ -16,10 +16,25 @@ export const seatTable = (id) => {
   }
 }
 
+export const clearTable = (id) => {
+  return {
+    type: CLEAR_TABLE,
+    id: id,
+    occupied: false
+  }
+}
+
 export const seatTableFetch = (id) => {
   return(dispatch) => {
    patchFetch("http://localhost:3000/api/v1/static_tables/", id, { occupied: true })
   .then(result => dispatch(seatTable(id)))
+}
+}
+
+export const clearTableFetch = (id) => {
+  return(dispatch) => {
+   patchFetch("http://localhost:3000/api/v1/static_tables/", id, { occupied: false })
+  .then(result => dispatch(clearTable(id)))
 }
 }
 

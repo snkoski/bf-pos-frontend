@@ -1,4 +1,4 @@
-import { STATIC_TABLE_FETCH_SUCCESS, SEAT_TABLE} from "../actions/types";
+import { STATIC_TABLE_FETCH_SUCCESS, SEAT_TABLE, CLEAR_TABLE } from "../actions/types";
 
 export function static_tables(state = [], action) {
   switch (action.type) {
@@ -6,7 +6,6 @@ export function static_tables(state = [], action) {
       return action.static_tables;
 
     case SEAT_TABLE:
-    
       let newState = state.map(table => {
         if (table.id === parseInt(action.id, 10)) {
           table.occupied = action.occupied
@@ -14,6 +13,16 @@ export function static_tables(state = [], action) {
         return table
       })
       return newState;
+
+      case CLEAR_TABLE:
+      let newStates = state.map(table => {
+        if (table.id === parseInt(action.id, 10)) {
+          table.occupied = action.occupied
+        }
+        return table
+      })
+      return newStates;
+
     default:
       return state;
   }

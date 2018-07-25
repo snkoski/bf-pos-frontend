@@ -6,7 +6,7 @@ import { Switch, Route } from 'react-router-dom';
 import ReservationList from "./ReservationList";
 import WaitlistList from "./WaitlistList";
 import OpenTableList from "./OpenTableList";
-// import SeatedTableList from "./SeatedTableList";
+import SeatedTableList from "./SeatedTableList";
 
 import TableSvg from "./TableSvg";
 import ReservationForm from "./ReservationForm";
@@ -31,7 +31,7 @@ class FohContainer extends React.Component {
           {/* <OpenTableList />
           <SeatedTableList /> */}
           <OpenTableList />
-
+          <SeatedTableList />
           <ReservationList />
           <WaitlistList />
 
