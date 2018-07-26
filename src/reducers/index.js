@@ -1,11 +1,10 @@
 import { combineReducers } from "redux";
 import { reservations, reservationsHasErrored, reservationsIsLoading } from "./reservations";
 import { waitlist, waitlistHasErrored, waitlistIsLoading } from "./waitlist";
-import { reservation } from "./reservation";
 import { static_tables, tables } from "./tables";
+import { customer } from "./customers";
 
 export default combineReducers({
-  reservation,
   reservations,
   reservationsHasErrored,
   reservationsIsLoading,
@@ -13,5 +12,6 @@ export default combineReducers({
   waitlistHasErrored,
   waitlistIsLoading,
   static_tables,
-  tables
+  tables,
+  customer
 });

@@ -24,22 +24,6 @@ export const createFetch = (url, data) => {
   }
 
   return fetch(url, options)
-    // dispatch(reservationsIsLoading(true));
+    .then(response => response.json())
 
-
-
-    // .then((response) => {
-    //   if(!response.ok) {
-    //     throw Error(response.statusText);
-    //   }
-    //   dispatch(reservationsIsLoading(false));
-    //
-    //   return response;
-    // })
-
-      .then(response => response.json())
-      //  .then(result => {
-      //    console.log(result)
-      //   dispatch(createReservation(result))
-      // })
   };

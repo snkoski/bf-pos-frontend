@@ -8,9 +8,9 @@
   color: red;
 }
 
-.circle {
+/* .circle {
   fill-opacity: 0.3;
-}
+} */
 
 .rect.small {
   fill: pink;
@@ -21,3 +21,11 @@
 .ui.grid>* {
   padding: 1px !important
 }
+
+.circle {
+  fill: red;
+}
+/*
+.circle[occupied] {
+  fill: black;
+} */

@@ -36,26 +36,11 @@ export const cancelReservation = (id) => {
   };
 }
 
-// export const cancelReservation = (reservation) => {
-//   return {
-//     type: CANCEL_RESERVATION,
-//     reservations: reservation
-//   }
-// }
-//
-// export const errorAfterFiveSeconds() {
-//   return(dispatch) => {
-//     setTimeout(() => {
-//       dispatch(reservationsHasErrored(true));
-//     }, 5000);
-//   };
-// }
-
 export const reservationsFetchData = (url) => {
   return(dispatch) => {
     dispatch(reservationsIsLoading(true));
 
-    fetch(url)
+    return fetch(url)
       .then((response) => {
         if(!response.ok) {
           throw Error(response.statusText);
@@ -70,38 +55,7 @@ export const reservationsFetchData = (url) => {
   };
 }
 
-// export const newReservation = (reservation) => {
-//
-//   const options = {
-//     method: "POST",
-//     headers: {
-//       Accept: "application/json",
-//       "Content-Type": "application/json"
-//     },
-//     body: JSON.stringify(reservation)
-//   }
-//
-//   return(dispatch) => {
-//     dispatch(reservationsIsLoading(true));
-//
-//     fetch("http://localhost:3000/api/v1/reservations", options)
-//
-//     .then((response) => {
-//       if(!response.ok) {
-//         throw Error(response.statusText);
-//       }
-//       dispatch(reservationsIsLoading(false));
-//
-//       return response;
-//     })
-//
-//       .then(response => response.json())
-//        .then(result => {
-//          console.log(result)
-//         dispatch(createReservation(result))
-//       })
-//   };
-// }
+
 export const newReservationFetch = (reservation) => {
   return(dispatch) => {
     createFetch("http://localhost:3000/api/v1/reservations", reservation)

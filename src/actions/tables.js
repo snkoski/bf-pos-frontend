@@ -1,4 +1,4 @@
-import { STATIC_TABLE_FETCH_SUCCESS, SEAT_TABLE, CLEAR_TABLE, CREATE_TABLE, TABLE_FETCH_SUCCESS } from './types';
+import { STATIC_TABLE_FETCH_SUCCESS, STATIC_SEAT_TABLE, STATIC_CLEAR_TABLE, CREATE_TABLE, TABLE_FETCH_SUCCESS, CLEAR_TABLE } from './types';
 import { patchFetch, createFetch } from "../adapters/adapters";
 
 export const staticTableFetch = (tables) => {
@@ -15,11 +15,19 @@ export const tableFetch = (tables) => {
   }
 }
 
-export const seatTable = (id) => {
+export const staticSeatTable = (id) => {
   return {
-    type: SEAT_TABLE,
+    type: STATIC_SEAT_TABLE,
     id: id,
     occupied: true
+  }
+}
+
+export const staticClearTable = (id) => {
+  return {
+    type: STATIC_CLEAR_TABLE,
+    id: id,
+    occupied: false
   }
 }
 
@@ -38,18 +46,25 @@ export const createTable = (table) => {
   }
 }
 
-export const seatTableFetch = (id) => {
+export const staticSeatTableFetch = (id) => {
   return(dispatch) => {
    patchFetch("http://localhost:3000/api/v1/static_tables/", id, { occupied: true })
-  .then(result => dispatch(seatTable(id)))
+  .then(result => dispatch(staticSeatTable(id)))
+}
+}
+
+export const staticClearTableFetch = (id) => {
+  return(dispatch) => {
+   patchFetch("http://localhost:3000/api/v1/static_tables/", id, { occupied: false })
+  .then(result => dispatch(staticClearTable(id)))
 }
 }
 
 export const clearTableFetch = (id) => {
   return(dispatch) => {
-   patchFetch("http://localhost:3000/api/v1/static_tables/", id, { occupied: false })
-  .then(result => dispatch(clearTable(id)))
-}
+    patchFetch("http://localhost:3000/api/v1/tables/", id, { occupied: false })
+    .then(result => dispatch(clearTable(id)))
+  }
 }
 
 export const staticTablesFetchData = (url) => {
@@ -69,40 +84,9 @@ export const tablesFetchData = (url) => {
 }
 //
 export const newTableFetch = (table) => {
+
   return(dispatch) => {
     createFetch("http://localhost:3000/api/v1/tables", table)
     .then(result => dispatch(createTable(result)))
   }
 }
-// export const newReservation = (reservation) => {
-//
-//     const options = {
-//       method: "POST",
-//       headers: {
-//         Accept: "application/json",
-//         "Content-Type": "application/json"
-//       },
-//       body: JSON.stringify(reservation)
-//     }
-//
-//     return(dispatch) => {
-//       dispatch(reservationsIsLoading(true));
-//
-//       fetch("http://localhost:3000/api/v1/reservations", options)
-//
-//       .then((response) => {
-//         if(!response.ok) {
-//           throw Error(response.statusText);
-//         }
-//         dispatch(reservationsIsLoading(false));
-//
-//         return response;
-//       })
-//
-//         .then(response => response.json())
-//          .then(result => {
-//            console.log(result)
-//           dispatch(createReservation(result))
-//         })
-//     };
-//   }
