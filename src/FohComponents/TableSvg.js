@@ -18,7 +18,7 @@ class TableSvg extends React.Component {
   componentDidMount() {
     this.props.staticTablesFetchData("http://localhost:3000/api/v1/static_tables");
     this.props.tablesFetchData("http://localhost:3000/api/v1/tables")
-    
+
 
   }
 
@@ -81,22 +81,22 @@ class TableSvg extends React.Component {
         <svg viewBox="0 0 500 500" preserveAspectRatio="xMinYMin" width="100%" height="auto">
           <rect className="rect" width="100%" height="95vh" />
           <circle id="1"
-            className="circle" cx="150" cy="100" r="25" stroke="green" strokeWidth="4"  onClick={(this.handleClick.bind(this))}  />
+            className="circle" cx="150" cy="100" r="75" stroke="green" strokeWidth="4"  onClick={(this.handleClick.bind(this))}  />
 
-          <circle id="2" className="circle" cx="400" cy="100" r="10" stroke="green" strokeWidth="4" fill="yellow"
+          <circle id="2" className="circle" cx="400" cy="100" r="75" stroke="green" strokeWidth="4" fill="yellow"
             onClick={(this.handleClick.bind(this))}
           />
 
 
-          <circle id="3" className="circle" cx="150" cy="350" r="90" stroke="green" strokeWidth="4" fill="yellow"
+          <circle id="3" className="circle" cx="150" cy="350" r="75" stroke="green" strokeWidth="4" fill="yellow"
             onClick={(this.handleClick.bind(this))}
           ></circle>
-          <defs>
+          {/* <defs>
             <filter id="f1" x="0" y="0">
               <feGaussianBlur in="SourceGraphic" stdDeviation="15" />
             </filter>
-          </defs>
-          <rect className="rect small" width="90" height="90" x="50%" filter="url(#f1)" />
+            </defs>
+          <rect className="rect small" width="90" height="90" x="50%" filter="url(#f1)" /> */}
 
         </svg>
 

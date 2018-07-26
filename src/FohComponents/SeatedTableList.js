@@ -22,7 +22,8 @@ currentCustomers = () => {
 }
 
 renderSeatedTableCards() {
-  return this.props.tables.map(table => {
+  return this.props.tables.filter(table => {
+
     return <SeatedTableCard />
   })
 }
@@ -49,12 +50,12 @@ debugger
 
       <div>
         <h1>Seated Tables</h1>
-        <ul>
+        {/* <ul>
           {this.renderSeatedTableCards()}
-        </ul>
+        </ul> */}
 
 
-        {/* {currentTables.map(table => {
+        {currentTables.map(table => {
           // if (table.occupied === true) {
 
 
@@ -62,12 +63,12 @@ debugger
             <p key={table.id}> Table {table.table_number}</p>
             {this.currentCustomers}
             <button key={table.id + table.occupied} onClick={() => {
-          this.props.staticClearTableFetch(table.table_number)
-          this.props.clearTableFetch(table.id)
+              this.props.staticClearTableFetch(table.table_number)
+              this.props.clearTableFetch(table.id)
             }}>clear table</button>
           </div>
             // }
-        })} */}
+        })}
       </div>
 
           )
