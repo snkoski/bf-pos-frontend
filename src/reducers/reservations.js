@@ -25,19 +25,27 @@ export function reservations(state = [], action) {
       return [...state, action.reservations];
 
     case RESERVATIONS_FETCH_DATA_SUCCESS:
+    let firstReservations = action.reservations.filter(reservation => {
+      return reservation.cancelled === false
+    })
+      return firstReservations;
 
-      return action.reservations;
 
     case CANCEL_RESERVATION:
+    let cancelRes = state.filter(res => {
+      return res.id !== action.id})
 
-    let newState = state.map(res => {
-      if (res.id === action.id) {
-        res.cancelled = action.cancelled
-      }
-      return res
-    })
+    return cancelRes
+
+    // let index = state.indexOf(action.reservation)
+    // let newRes = [
+    //   ...state.slice(0, index),
+    //   ...state.slice(index + 1)
+    // ]
+    //   return newRes;
+
     // debugger
-    return newState
+    // return newState
 
     //
 

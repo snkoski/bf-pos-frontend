@@ -1,6 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import { newReservationFetch } from "../actions/reservations";
+import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router';
+
 
 class ReservationForm extends React.Component {
 
@@ -17,7 +20,7 @@ class ReservationForm extends React.Component {
     this.props.newReservationFetch(this.state)
     let name = `Reservation created for ${this.state.guest_name}`
     alert(name)
-    this.props.history.goBack()
+    this.props.history.push('/')
   }
 
   handleChange = (e) => {
@@ -28,7 +31,7 @@ class ReservationForm extends React.Component {
 
   render() {
     // TODO: semantic ui form for styling
-    console.log(this.props);
+    console.log('rerender');
     return(
 
       <div style={{ textAlign: "center" }}>
@@ -60,7 +63,7 @@ class ReservationForm extends React.Component {
           <input type="submit"/>
 
         </form>
-        <button onClick={() => this.props.history.goBack()}>Go Back</button>
+        <button onClick={ () => { this.props.history.push('/') } }>Go Back</button>
       </div>
     )
   }
@@ -72,4 +75,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { newReservationFetch })(ReservationForm);
+export default withRouter(connect(mapStateToProps, { newReservationFetch })(ReservationForm));

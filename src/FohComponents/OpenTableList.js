@@ -1,5 +1,6 @@
 import React from 'react';
-import{ connect } from 'react-redux';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 class OpenTableList extends React.Component {
 
@@ -24,4 +25,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(OpenTableList);
+export default withRouter(connect(mapStateToProps)(OpenTableList));

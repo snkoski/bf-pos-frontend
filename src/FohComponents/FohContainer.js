@@ -1,7 +1,8 @@
 import React from "react";
 import { Grid } from "semantic-ui-react";
 import "../table.css";
-import { Switch, Route } from 'react-router-dom';
+import {  Switch, Route } from 'react-router-dom';
+import {withRouter} from 'react-router'
 
 import ReservationList from "./ReservationList";
 import WaitlistList from "./WaitlistList";
@@ -14,8 +15,9 @@ import ReservationForm from "./ReservationForm";
 class FohContainer extends React.Component {
 
   render() {
-
+// console.log("FOH CONTAINER: ", this.props);
     return(
+
       <Grid>
         <Grid.Column width={12}>
           {/* <h1 className="anh1">Hello</h1> */}
@@ -26,10 +28,7 @@ class FohContainer extends React.Component {
           </Switch>
         </Grid.Column>
         <Grid.Column width={4}>
-          {/* <h1>Four wide column</h1> */}
 
-          {/* <OpenTableList />
-          <SeatedTableList /> */}
           <OpenTableList />
           <SeatedTableList />
           <ReservationList />
@@ -45,7 +44,7 @@ class FohContainer extends React.Component {
   }
 }
 
-export default FohContainer;
+export default withRouter(FohContainer);
 
 
 // right side svg column

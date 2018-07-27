@@ -34,7 +34,12 @@ export function tables(state=[], action) {
   switch (action.type) {
 
     case TABLE_FETCH_SUCCESS:
-      return action.tables;
+    let firstTables = action.tables.filter(table => {
+      return table.occupied === true
+    })
+
+      return firstTables;
+    // return action.tables
 
     case CREATE_TABLE:
       return [...state, action.tables];

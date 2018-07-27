@@ -1,9 +1,8 @@
 import React from 'react';
-import { staticTablesFetchData, staticSeatTableFetch, tablesFetchData, newTableFetch } from '../actions/tables';
+import { staticSeatTableFetch, newTableFetch } from '../actions/tables';
 import { newCustomerFetch } from "../actions/customers";
 import { connect } from 'react-redux';
-import { withRouter, Link } from 'react-router-dom';
-import Popup from 'reactjs-popup';
+import { withRouter } from 'react-router-dom';
 
 class TableSvg extends React.Component {
   constructor(props) {
@@ -12,14 +11,6 @@ class TableSvg extends React.Component {
     this.state = {
       selected: ""
     }
-  }
-
-
-  componentDidMount() {
-    this.props.staticTablesFetchData("http://localhost:3000/api/v1/static_tables");
-    this.props.tablesFetchData("http://localhost:3000/api/v1/tables")
-
-
   }
 
   setTables() {
@@ -46,6 +37,7 @@ class TableSvg extends React.Component {
   }
 
   handleClick = (e) => {
+    // debugger
     let foundTable = ""
     let num = parseInt(e.target.id, 10)
     let test = !!this.props.tables.find(table => {
@@ -59,7 +51,7 @@ class TableSvg extends React.Component {
       this.props.staticSeatTableFetch(e.target.id)
       this.props.newTableFetch({occupied: true, table_number: parseInt(e.target.id, 10), user_id: 1})
 
-      let customerNumber = parseInt(prompt("enter a number"))
+      let customerNumber = parseInt(prompt("enter a number"), 10)
       console.log(customerNumber);
       this.seatCustomer(customerNumber, foundTable)
     }
@@ -74,7 +66,7 @@ class TableSvg extends React.Component {
 
   render() {
     // this.setTables()
-    console.log(this.state);
+    // console.log(this.state);
     // console.log(this.props);
     return(
       <div className="svg-container">
@@ -110,7 +102,8 @@ class TableSvg extends React.Component {
 const mapStateToProps = (state) => {
   return {
     static_tables: state.static_tables,
-    tables: state.tables
+    tables: state.tables,
+    customers: state.customers
   };
 };
 //
@@ -120,4 +113,4 @@ const mapStateToProps = (state) => {
 //   };
 // };
 
-export default withRouter(connect(mapStateToProps,{ staticSeatTableFetch, staticTablesFetchData, newTableFetch, tablesFetchData, newCustomerFetch })(TableSvg));
+export default withRouter(connect(mapStateToProps,{ staticSeatTableFetch, newTableFetch, newCustomerFetch })(TableSvg));

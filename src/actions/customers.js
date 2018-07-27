@@ -5,7 +5,7 @@ import { patchFetch, createFetch } from "../adapters/adapters";
 export const customerFetchDataSuccess = (customers) => {
     return {
       type: CUSTOMER_FETCH_DATA_SUCCESS,
-      customers
+      customers: customers
     }
 }
 
@@ -18,11 +18,20 @@ export const createCustomer = (customer) => {
 
 export const customerFetchData = (url) => {
   return(dispatch) => {
-    return fetch(url)
+    fetch(url)
     .then((response) => response.json())
     .then((customers) => dispatch(customerFetchDataSuccess(customers)))
   }
 }
+//
+// export const customerFetchData = (url) => {
+//   return(dispatch) => {
+//     return fetch(url)
+//     .then((response) => response.json())
+//
+//     .then(console.log)
+//   }
+// }
 
 export const newCustomerFetch = (customer) => {
   return(dispatch) => {
