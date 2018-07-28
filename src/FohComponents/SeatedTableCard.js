@@ -9,16 +9,17 @@ class SeatedTableCard extends React.Component {
   // return table.occupied === true
   // })
 
+  removeTable = () => {
+    this.props.staticClearTableFetch(this.props.table.table_number)
+    this.props.clearTableFetch(this.props.table.id)
+  }
 
   render() {
 
   return <div key={this.props.table.id + 'div'}>
     <p key={this.props.table.id}> Table {this.props.table.table_number}</p>
 
-    <button key={this.props.table.id + this.props.table.occupied} onClick={() => {
-      this.props.staticClearTableFetch(this.props.table.table_number)
-      this.props.clearTableFetch(this.props.table.id)
-    }}>clear table</button>
+    <button key={this.props.table.id + this.props.table.occupied} onClick={this.removeTable}>clear table</button>
   </div>
   }
  }

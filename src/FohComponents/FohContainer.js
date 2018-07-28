@@ -44,7 +44,7 @@ class FohContainer extends React.Component {
   }
 }
 
-export default withRouter(FohContainer);
+export default FohContainer;
 
 
 // right side svg column
