@@ -53,18 +53,13 @@ class TableSvg extends React.Component {
       if (customerNumber > 0) {
       this.props.staticSeatTableFetch(e.target.id)
       this.props.newTableFetch({occupied: true, table_number: parseInt(e.target.id, 10), user_id: 1})
-
-
       console.log(customerNumber);
       this.seatCustomer(customerNumber, foundTable)
-    }
-    }
-
-
-
-
+      console.log(this.props);
 
     }
+    }
+  }
 
 
 

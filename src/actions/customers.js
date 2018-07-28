@@ -12,7 +12,7 @@ export const customerFetchDataSuccess = (customers) => {
 export const createCustomer = (customer) => {
   return {
     type: NEW_CUSTOMER,
-    customer:customer
+    customer: customer
   }
 }
 
@@ -34,6 +34,7 @@ export const customerFetchData = (url) => {
 // }
 
 export const newCustomerFetch = (customer) => {
+
   return(dispatch) => {
     createFetch("http://localhost:3000/api/v1/customers", customer)
     .then(result => dispatch(createCustomer(result)))

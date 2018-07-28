@@ -57,6 +57,7 @@ export const reservationsFetchData = (url) => {
 
 
 export const newReservationFetch = (reservation) => {
+
   return(dispatch) => {
     createFetch("http://localhost:3000/api/v1/reservations", reservation)
     .then(result => dispatch(createReservation(result)))

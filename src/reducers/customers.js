@@ -7,7 +7,7 @@ export function customers(state = [], action) {
       return customer.seated === true
     })
 
-      return firstCustomers
+      return firstCustomers;
 
     case NEW_CUSTOMER:
       return [...state, action.customer]
