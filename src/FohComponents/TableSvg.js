@@ -48,12 +48,16 @@ class TableSvg extends React.Component {
       this.setState({
         selected: num
       })
+
+      let customerNumber = parseInt(prompt("enter a number"), 10)
+      if (customerNumber > 0) {
       this.props.staticSeatTableFetch(e.target.id)
       this.props.newTableFetch({occupied: true, table_number: parseInt(e.target.id, 10), user_id: 1})
 
-      let customerNumber = parseInt(prompt("enter a number"), 10)
+
       console.log(customerNumber);
       this.seatCustomer(customerNumber, foundTable)
+    }
     }
 
 
