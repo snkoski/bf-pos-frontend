@@ -1,4 +1,4 @@
-import { NEW_CUSTOMER, CUSTOMER_FETCH_DATA_SUCCESS } from "../actions/types";
+import { NEW_CUSTOMER, CUSTOMER_FETCH_DATA_SUCCESS, REMOVE_CUSTOMER } from "../actions/types";
 
 export function customers(state = [], action) {
   switch (action.type) {
@@ -10,7 +10,13 @@ export function customers(state = [], action) {
       return firstCustomers;
 
     case NEW_CUSTOMER:
-      return [...state, action.customer]
+      return [...state, action.customer];
+
+    case REMOVE_CUSTOMER:
+      let removeCust = state.filter(customer => {
+        return customer.id !== action.id
+      })
+      return removeCust
 
     default:
       return state;

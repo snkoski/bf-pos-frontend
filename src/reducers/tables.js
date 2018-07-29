@@ -29,6 +29,26 @@ export function static_tables(state = [], action) {
   }
 }
 
+export function lastTable(state={}, action) {
+
+  switch (action.type) {
+
+  case TABLE_FETCH_SUCCESS:
+    let lastTable = action.tables[action.tables.length - 1]
+      return lastTable;
+
+
+
+    case CREATE_TABLE:
+
+    let newLast = action.tables
+      return newLast;
+
+  default:
+    return state;
+}
+}
+
 export function tables(state=[], action) {
 
   switch (action.type) {

@@ -9,9 +9,11 @@ class TableSvg extends React.Component {
     super(props);
 
     this.state = {
-      selected: ""
+      selected: "",
+      last: ""
     }
   }
+
 
   setTables() {
     if (this.props.tables.length > 0 && this.props.static_tables.length > 0) {
@@ -37,39 +39,37 @@ class TableSvg extends React.Component {
   }
 
   handleClick = (e) => {
+
+
+
+
+// debugger
+
     let num = parseInt(e.target.id, 10)
-    let nextTable = this.props.tables[this.props.tables.length - 1].id + 1
+    let nextTable = this.state.last
     let foundTable = ''
     let test = !!this.props.tables.find(table => {
       foundTable = table.id + 1
-      console.log("FOUND AFTER", foundTable);
       return table.occupied === true && table.table_number === num
     })
-    // debugger
-    console.log("FFT", foundTable);
     if (test === false) {
       this.setState({
         selected: num
       })
-      console.log("FFT", foundTable);
       let customerNumber = parseInt(prompt("enter a number"), 10)
       if (customerNumber > 0) {
       this.props.staticSeatTableFetch(e.target.id)
       this.props.newTableFetch({occupied: true, table_number: parseInt(e.target.id, 10), user_id: 1})
-
-
-      console.log(customerNumber);
-      console.log("FT", this.props.tables[this.props.tables.length - 1]);
-      this.seatCustomer(customerNumber, nextTable)
-      console.log(this.props);
-
+      this.seatCustomer(customerNumber, (this.props.lastTable.id + 1))
     }
     }
+
   }
 
 
 
   render() {
+    // debugger
     // this.setTables()
     // console.log(this.state);
     // console.log(this.props);
@@ -108,14 +108,9 @@ const mapStateToProps = (state) => {
   return {
     static_tables: state.static_tables,
     tables: state.tables,
-    customers: state.customers
+    customers: state.customers,
+    lastTable: state.lastTable
   };
 };
-//
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     fetchStaticTables: (url) => dispatch(staticTablesFetchData(url))
-//   };
-// };
 
 export default withRouter(connect(mapStateToProps,{ staticSeatTableFetch, newTableFetch, newCustomerFetch })(TableSvg));

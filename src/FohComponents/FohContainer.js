@@ -3,6 +3,7 @@ import { Grid } from "semantic-ui-react";
 import "../table.css";
 import {  Switch, Route } from 'react-router-dom';
 import {withRouter} from 'react-router'
+import { connect } from 'react-redux'
 
 import ReservationList from "./ReservationList";
 import WaitlistList from "./WaitlistList";
@@ -24,7 +25,7 @@ class FohContainer extends React.Component {
           <Switch>
 
             <Route path='/reservation' component={ReservationForm} />
-            <Route path='/' component={TableSvg} />
+            <Route path='/' component={TableSvg} last={this.props.lastTable} />
           </Switch>
         </Grid.Column>
         <Grid.Column width={4}>
@@ -44,7 +45,17 @@ class FohContainer extends React.Component {
   }
 }
 
-export default FohContainer;
+const mapStateToProps = (state) => {
+  return {
+    static_tables: state.static_tables,
+    tables: state.tables,
+    customers: state.customers,
+    lastTable: state.lastTable
+  };
+};
+
+
+export default withRouter(connect(mapStateToProps)(FohContainer));
 
 
 // right side svg column

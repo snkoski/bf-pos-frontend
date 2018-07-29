@@ -1,4 +1,4 @@
-import { NEW_CUSTOMER, CUSTOMER_FETCH_DATA_SUCCESS } from "./types"
+import { NEW_CUSTOMER, CUSTOMER_FETCH_DATA_SUCCESS, REMOVE_CUSTOMER } from "./types"
 import { patchFetch, createFetch } from "../adapters/adapters";
 
 
@@ -16,6 +16,14 @@ export const createCustomer = (customer) => {
   }
 }
 
+export const removeCustomer =(id) => {
+  return {
+    type: REMOVE_CUSTOMER,
+    id: id,
+    seated: false
+  };
+}
+
 export const customerFetchData = (url) => {
   return(dispatch) => {
     fetch(url)
@@ -23,20 +31,18 @@ export const customerFetchData = (url) => {
     .then((customers) => dispatch(customerFetchDataSuccess(customers)))
   }
 }
-//
-// export const customerFetchData = (url) => {
-//   return(dispatch) => {
-//     return fetch(url)
-//     .then((response) => response.json())
-//
-//     .then(console.log)
-//   }
-// }
 
 export const newCustomerFetch = (customer) => {
 
   return(dispatch) => {
     createFetch("http://localhost:3000/api/v1/customers", customer)
     .then(result => dispatch(createCustomer(result)))
+  }
+}
+
+export const removeCustomerFetch = (id) => {
+  return(dispatch) => {
+    patchFetch("http://localhost:3000/api/v1/reservations/", id, { seated: false })
+    .then(result => dispatch(removeCustomer(id)))
   }
 }

@@ -4,17 +4,12 @@ import { connect } from 'react-redux';
 
 class SeatedTableCard extends React.Component {
 
-
-  // let currentTables = this.props.tables.filter(table => {
-  // return table.occupied === true
-  // })
-
   removeTable = () => {
 
     let tableCustomers = this.props.customers.filter(customer => {
       return customer.table_id === this.props.table.id
     })
-
+// debugger
     this.props.staticClearTableFetch(this.props.table.table_number)
     this.props.clearTableFetch(this.props.table.id)
 // debugger

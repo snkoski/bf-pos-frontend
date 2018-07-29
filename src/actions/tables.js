@@ -42,7 +42,21 @@ export const clearTable = (id) => {
 export const createTable = (table) => {
   return {
     type: CREATE_TABLE,
-    tables : table
+    tables: table
+  }
+}
+
+export const lastTable = (tables) => {
+  return {
+    type: TABLE_FETCH_SUCCESS,
+    table: tables
+  }
+}
+
+export const changeLastTable = (table) => {
+  return {
+    type: CREATE_TABLE,
+    table: table
   }
 }
 
