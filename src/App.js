@@ -13,6 +13,7 @@ import { customerFetchData } from './actions/customers';
 import { reservationsFetchData } from './actions/reservations';
 import { recipesFetchData } from './actions/recipes';
 import { ordersFetchData } from './actions/orders';
+import { waitlistFetchData } from './actions/waitlist';
 
 class App extends Component {
 
@@ -23,6 +24,7 @@ componentDidMount() {
   this.props.reservationsFetchData("http://localhost:3000/api/v1/reservations")
   this.props.recipesFetchData("http://localhost:3000/api/v1/recipes")
   this.props.ordersFetchData("http://localhost:3000/api/v1/orders")
+  this.props.waitlistFetchData("http://localhost:3000/api/v1/waitlists")
 }
 
   render() {
@@ -48,4 +50,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default withRouter(connect(mapStateToProps,{ staticTablesFetchData, tablesFetchData, customerFetchData, reservationsFetchData, recipesFetchData, ordersFetchData })(App));
+export default withRouter(connect(mapStateToProps,{ staticTablesFetchData, tablesFetchData, customerFetchData, reservationsFetchData, recipesFetchData, ordersFetchData, waitlistFetchData })(App));

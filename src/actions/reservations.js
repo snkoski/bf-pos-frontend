@@ -69,7 +69,6 @@ export const cancelReservationFetch = (id) => {
   return(dispatch) => {
    patchFetch("http://localhost:3000/api/v1/reservations/", id, { cancelled: true })
   .then(result => dispatch(cancelReservation(id)))
-  // .then(result => console.log(result))
 }
 }
 // export const deleteReservation = (id) => {

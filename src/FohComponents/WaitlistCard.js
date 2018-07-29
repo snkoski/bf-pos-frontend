@@ -1,4 +1,8 @@
 import React from 'react';
+import { connect } from "react-redux";
+// import { cancelReservationFetch } from "../actions/reservations";
+import { withRouter } from 'react-router'
+
 
 class WaitlistCard extends React.Component {
   render() {

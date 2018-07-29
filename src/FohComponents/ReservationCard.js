@@ -12,10 +12,6 @@ class ReservationCard extends React.Component {
 
   }
 
-  // cancelReservation = (e) => {
-  //
-  // }
-  //
   render() {
 
     return(

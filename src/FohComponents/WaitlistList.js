@@ -7,9 +7,6 @@ import { connect } from 'react-redux';
 import { waitlistFetchData } from '../actions/waitlist';
 
 class WaitlistList extends React.Component {
-  componentDidMount() {
-    this.props.fetchWaitlist("http://localhost:3000/api/v1/waitlists")
-  }
 
   renderWaitlistCards() {
     return this.props.waitlist.map(waitlist => {
@@ -37,10 +34,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchWaitlist: (url) =>  dispatch(waitlistFetchData(url))
-  };
-};
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(WaitlistList));
+export default withRouter(connect(mapStateToProps)(WaitlistList));

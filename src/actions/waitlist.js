@@ -1,4 +1,4 @@
-import { WAITLIST_HAS_ERRORED, WAITLIST_IS_LOADING, WAITLIST_FETCH_DATA_SUCCESS} from './types';
+import { WAITLIST_HAS_ERRORED, WAITLIST_IS_LOADING, WAITLIST_FETCH_DATA_SUCCESS, CANCEL_WAITLIST} from './types';
 
 export function waitlistHasErrored(bool) {
   return {
@@ -39,3 +39,10 @@ export function waitlistFetchData(url) {
       .catch(() => dispatch(waitlistHasErrored(true)));
   };
 }
+
+// export const cancelWaitlistFetch = (id) => {
+//   return(dispatch) => {
+//    patchFetch("http://localhost:3000/api/v1/waitlists/", id, { cancelled: true })
+//   .then(result => dispatch(cancelReservation(id)))
+// }
+// }
