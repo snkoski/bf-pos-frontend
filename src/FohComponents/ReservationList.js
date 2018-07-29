@@ -10,39 +10,7 @@ class ReservationList extends React.Component {
   state = {
     route: true
   }
-  // constructor(props) {
-  //   super(props);
-  //
-  //   this.state = {
-  //     reservations: []
-  //   }
-  // }
 
-  // componentDidMount() {
-  //   this.props.fetchReservations("http://localhost:3000/api/v1/reservations")
-  // }
-
-  // fetchReservations() {
-  //   this.setState({ isLoading: true });
-  //
-  //   fetch("http://localhost:3000/api/v1/reservations")
-  //   .then(resp => {
-  //     if (!resp.ok) {
-  //       throw Error(resp.statusText);
-  //     }
-  //     this.setState({ isLoading: false });
-  //
-  //     return resp
-  //   })
-  //   .then(resp => resp.json())
-  //   .then(reservations => this.setState({ reservations }))
-  //   .catch(() => this.setState({ hasErrored: true }));
-  // // }
-  // componentDidUpdate (prevProps){
-  //   if (prevProps.reservations !== this.props.reservations) {
-  //     this.props.fetchReservations("http://localhost:3000/api/v1/reservations")
-  //   }
-  // }
 
   handleRoute = () => {
     // alert('clci')
@@ -51,11 +19,7 @@ class ReservationList extends React.Component {
       route: !this.state.route
     })
   }
-  // componentDidUpdate(prevProps) {
-  //   if (this.props.reservations !== prevProps.reservations) {
-  //     this.props.fetchReservations("http://localhost:3000/api/v1/reservations")
-  //   }
-  // }
+
   renderReservationsCards() {
 
     return this.props.reservations.map(reservation => {

@@ -29,3 +29,8 @@
 .circle[occupied] {
   fill: black;
 } */
+
+.table-order {
+  text-align: center;
+  color: red;
+}

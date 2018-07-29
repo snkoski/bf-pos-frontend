@@ -9,6 +9,7 @@ import ReservationList from "./ReservationList";
 import WaitlistList from "./WaitlistList";
 import OpenTableList from "./OpenTableList";
 import SeatedTableList from "./SeatedTableList";
+import OrderForm from "./OrderForm";
 
 import TableSvg from "./TableSvg";
 import ReservationForm from "./ReservationForm";
@@ -24,6 +25,7 @@ class FohContainer extends React.Component {
           {/* <h1 className="anh1">Hello</h1> */}
           <Switch>
 
+            <Route path='/order/:value' component={OrderForm} />
             <Route path='/reservation' component={ReservationForm} />
             <Route path='/' component={TableSvg} last={this.props.lastTable} />
           </Switch>

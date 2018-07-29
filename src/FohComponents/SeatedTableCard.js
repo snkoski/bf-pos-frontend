@@ -2,6 +2,7 @@ import React from 'react';
 import { staticClearTableFetch, clearTableFetch } from "../actions/tables";
 import { removeCustomerFetch } from "../actions/customers";
 import { connect } from 'react-redux';
+import { Link, withRouter } from "react-router-dom"
 
 class SeatedTableCard extends React.Component {
 
@@ -25,6 +26,9 @@ class SeatedTableCard extends React.Component {
   return <div key={this.props.table.id + 'div'}>
     <p key={this.props.table.id}> Table {this.props.table.table_number}</p>
 
+    {/* <h4><Link to={'/order/'+this.props.table}>Add Reservation</Link></h4> */}
+    <h4><Link to={`/order/${this.props.table.id}` }>Add Reservation</Link></h4>
+
     <button key={this.props.table.id + this.props.table.occupied} onClick={this.removeTable}>clear table</button>
   </div>
   }
@@ -37,4 +41,4 @@ const mapStateToProps = (state) => {
 
   };
 };
-export default connect(mapStateToProps, { staticClearTableFetch, clearTableFetch, removeCustomerFetch })(SeatedTableCard);
+export default withRouter(connect(mapStateToProps, { staticClearTableFetch, clearTableFetch, removeCustomerFetch })(SeatedTableCard));
