@@ -37,24 +37,30 @@ class TableSvg extends React.Component {
   }
 
   handleClick = (e) => {
-    // debugger
-    let foundTable = ""
     let num = parseInt(e.target.id, 10)
+    let nextTable = this.props.tables[this.props.tables.length - 1].id + 1
+    let foundTable = ''
     let test = !!this.props.tables.find(table => {
       foundTable = table.id + 1
+      console.log("FOUND AFTER", foundTable);
       return table.occupied === true && table.table_number === num
     })
+    // debugger
+    console.log("FFT", foundTable);
     if (test === false) {
       this.setState({
         selected: num
       })
-
+      console.log("FFT", foundTable);
       let customerNumber = parseInt(prompt("enter a number"), 10)
       if (customerNumber > 0) {
       this.props.staticSeatTableFetch(e.target.id)
       this.props.newTableFetch({occupied: true, table_number: parseInt(e.target.id, 10), user_id: 1})
+
+
       console.log(customerNumber);
-      this.seatCustomer(customerNumber, foundTable)
+      console.log("FT", this.props.tables[this.props.tables.length - 1]);
+      this.seatCustomer(customerNumber, nextTable)
       console.log(this.props);
 
     }

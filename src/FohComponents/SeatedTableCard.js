@@ -10,8 +10,15 @@ class SeatedTableCard extends React.Component {
   // })
 
   removeTable = () => {
+
+    let tableCustomers = this.props.customers.filter(customer => {
+      return customer.table_id === this.props.table.id
+    })
+
     this.props.staticClearTableFetch(this.props.table.table_number)
     this.props.clearTableFetch(this.props.table.id)
+// debugger
+    console.log("TC", tableCustomers);
   }
 
   render() {
