@@ -11,6 +11,7 @@ import {withRouter} from 'react-router'
 import { staticTablesFetchData, tablesFetchData } from './actions/tables';
 import { customerFetchData } from './actions/customers';
 import { reservationsFetchData } from './actions/reservations';
+import { recipesFetchData } from './actions/recipes';
 
 class App extends Component {
 
@@ -19,6 +20,7 @@ componentDidMount() {
   this.props.staticTablesFetchData("http://localhost:3000/api/v1/static_tables");
   this.props.customerFetchData("http://localhost:3000/api/v1/customers");
   this.props.reservationsFetchData("http://localhost:3000/api/v1/reservations")
+  this.props.recipesFetchData("http://localhost:3000/api/v1/recipes")
 }
 
   render() {
@@ -38,8 +40,9 @@ const mapStateToProps = (state) => {
     static_tables: state.static_tables,
     tables: state.tables,
     customers: state.customers,
-    reservations: state.reservations
+    reservations: state.reservations,
+    recipes: state.recipes
   };
 };
 
-export default withRouter(connect(mapStateToProps,{ staticTablesFetchData, tablesFetchData, customerFetchData, reservationsFetchData })(App));
+export default withRouter(connect(mapStateToProps,{ staticTablesFetchData, tablesFetchData, customerFetchData, reservationsFetchData, recipesFetchData })(App));

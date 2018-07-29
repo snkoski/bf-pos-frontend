@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import CustomerCard from "./CustomerCard";
 
 class OrderForm extends React.Component {
   constructor(props) {
@@ -17,7 +18,7 @@ class OrderForm extends React.Component {
     })
 
     return tableCustomers.map(customer => {
-      return <h1>Customer {customer.id}</h1>
+      return <CustomerCard key={customer.id} customer={customer} />
     })
   }
 
@@ -37,8 +38,10 @@ class OrderForm extends React.Component {
           <button onClick={ () => { this.props.history.push('/') } }>Go Back</button>
         </div>
         <div>
-          {this.renderCustomers()}
-        </div>
+          <ul>
+            {this.renderCustomers()}
+          </ul>
+          </div>
         </div>
     )
   }
