@@ -18,6 +18,7 @@ class SeatedTableCard extends React.Component {
     tableCustomers.forEach(customer => {
       this.props.removeCustomerFetch(customer.id)
     })
+    this.props.history.push('/')
     console.log("TC", tableCustomers);
   }
 
@@ -26,7 +27,6 @@ console.log("SEATED TABLE CARD: ", this.props);
   return <div key={this.props.table.id + 'div'}>
     <p key={this.props.table.id}> Table {this.props.table.table_number}</p>
 
-    {/* <h4><Link to={'/order/'+this.props.table}>Add Reservation</Link></h4> */}
     <h4><Link to={`/order/${this.props.table.id}` }>Add Order</Link></h4>
 
     <button key={this.props.table.id + this.props.table.occupied} onClick={this.removeTable}>clear table</button>

@@ -4,6 +4,7 @@ import { waitlist, waitlistHasErrored, waitlistIsLoading } from "./waitlist";
 import { static_tables, tables, lastTable } from "./tables";
 import { customers } from "./customers";
 import { recipes } from "./recipes";
+import { orders } from "./orders";
 
 export default combineReducers({
   reservations,
@@ -16,5 +17,6 @@ export default combineReducers({
   tables,
   customers,
   lastTable,
-  recipes
+  recipes,
+  orders
 });
