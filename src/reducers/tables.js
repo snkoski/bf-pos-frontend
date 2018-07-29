@@ -65,13 +65,11 @@ export function tables(state=[], action) {
       return [...state, action.tables];
 
     case CLEAR_TABLE:
-      let newStatess = state.map(table => {
-        if (table.id === parseInt(action.id, 10)) {
-          table.occupied = action.occupied
-        }
-        return table
+      let clearedTable = state.filter(table => {
+        return table.id !== action.id
       })
-      return newStatess;
+        return clearedTable;
+  
     default:
       return state;
   }

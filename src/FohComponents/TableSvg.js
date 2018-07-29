@@ -47,9 +47,7 @@ class TableSvg extends React.Component {
 
     let num = parseInt(e.target.id, 10)
     let nextTable = this.state.last
-    let foundTable = ''
     let test = !!this.props.tables.find(table => {
-      foundTable = table.id + 1
       return table.occupied === true && table.table_number === num
     })
     if (test === false) {

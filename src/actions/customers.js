@@ -42,7 +42,7 @@ export const newCustomerFetch = (customer) => {
 
 export const removeCustomerFetch = (id) => {
   return(dispatch) => {
-    patchFetch("http://localhost:3000/api/v1/reservations/", id, { seated: false })
+    patchFetch("http://localhost:3000/api/v1/customers/", id, { seated: false })
     .then(result => dispatch(removeCustomer(id)))
   }
 }

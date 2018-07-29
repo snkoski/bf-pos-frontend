@@ -1,5 +1,6 @@
 import React from 'react';
 import { staticClearTableFetch, clearTableFetch } from "../actions/tables";
+import { removeCustomerFetch } from "../actions/customers";
 import { connect } from 'react-redux';
 
 class SeatedTableCard extends React.Component {
@@ -13,6 +14,9 @@ class SeatedTableCard extends React.Component {
     this.props.staticClearTableFetch(this.props.table.table_number)
     this.props.clearTableFetch(this.props.table.id)
 // debugger
+    tableCustomers.forEach(customer => {
+      this.props.removeCustomerFetch(customer.id)
+    })
     console.log("TC", tableCustomers);
   }
 
@@ -33,4 +37,4 @@ const mapStateToProps = (state) => {
 
   };
 };
-export default connect(mapStateToProps, { staticClearTableFetch, clearTableFetch })(SeatedTableCard);
+export default connect(mapStateToProps, { staticClearTableFetch, clearTableFetch, removeCustomerFetch })(SeatedTableCard);
