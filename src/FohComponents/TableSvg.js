@@ -5,14 +5,7 @@ import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 
 class TableSvg extends React.Component {
-  constructor(props) {
-    super(props);
-
-    // this.state = {
-    //   selected: "",
-    //   last: ""
-    // }
-  }
+  
 
   setTables() {
     if (this.props.tables.length > 0 && this.props.static_tables.length > 0) {

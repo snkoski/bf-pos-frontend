@@ -1,7 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
 import {newReservationFetch} from "../actions/reservations";
-import {Link} from 'react-router-dom';
 import {withRouter} from 'react-router';
 
 class ReservationForm extends React.Component {

@@ -2,9 +2,10 @@ import React from 'react';
 import { staticClearTableFetch, clearTableFetch, selectedTable } from "../actions/tables";
 import { removeCustomerFetch, newCustomerFetch } from "../actions/customers";
 import { seatWaitlistFetch } from "../actions/waitlist";
-import { newTableFetch } from "../actions/tables"
+import { newTableFetch } from "../actions/tables";
+import { seatReservationFetch } from "../actions/reservations";
 import { connect } from 'react-redux';
-import { Link, withRouter } from "react-router-dom"
+import { Link, withRouter } from "react-router-dom";
 
 class SeatedTableCard extends React.Component {
 
@@ -14,15 +15,20 @@ class SeatedTableCard extends React.Component {
       return customer.table_id === this.props.table.id
     })
 // debugger
-    this.props.staticClearTableFetch(this.props.table.table_number)
+
     this.props.clearTableFetch(this.props.table.id)
 // debugger
     tableCustomers.forEach(customer => {
       this.props.removeCustomerFetch(customer.id)
     })
     this.props.history.push('/')
-    // this.checkWaitlist()
-    this.checkReservations()
+    if (this.props.reservations.length > 0) {
+      this.checkReservations()
+  }else if (this.props.waitlist.length > 0) {
+    this.checkWaitlist()
+  } else {
+    this.props.staticClearTableFetch(this.props.table.table_number)
+  }
     console.log("TC", tableCustomers);
   }
 
@@ -36,10 +42,24 @@ class SeatedTableCard extends React.Component {
   }
 
   checkReservations = () => {
-    debugger
+    // debugger
     if (this.props.reservations.length > 0) {
-      alert('there are reservations')
+      let nextGroupSize = this.props.reservations[0].number_of_guests
+      alert(`Now seating: ${this.props.reservations[0].guest_name}`)
+      this.props.seatReservationFetch(this.props.reservations[0].id)
+      this.seatReservation()
     }
+  }
+
+  seatReservation = () => {
+    let index = this.props.tables[this.props.tables.length - 1].id
+    this.props.newTableFetch({
+      occupied: true,
+      table_number: this.props.table.table_number,
+      user_id: 1
+    })
+    // create new customers for table
+    this.seatCustomer(this.props.reservations[0].number_of_guests, (index + 1))
   }
 
   checkWaitlist = () => {
@@ -95,4 +115,4 @@ const mapStateToProps = (state) => {
 
   };
 };
-export default withRouter(connect(mapStateToProps, { staticClearTableFetch, clearTableFetch, removeCustomerFetch, selectedTable, seatWaitlistFetch, newTableFetch, newCustomerFetch })(SeatedTableCard));
+export default withRouter(connect(mapStateToProps, { staticClearTableFetch, clearTableFetch, removeCustomerFetch, selectedTable, seatWaitlistFetch, newTableFetch, newCustomerFetch, seatReservationFetch })(SeatedTableCard));

@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { newWaitlistFetch } from "../actions/waitlist";
-import { Link } from 'react-router-dom';
+
 import { withRouter } from 'react-router';
 
 class WaitlistForm extends React.Component {
@@ -23,7 +23,7 @@ class WaitlistForm extends React.Component {
     e.preventDefault()
 
     this.props.newWaitlistFetch(this.state)
-    
+
     let name = `Waitlist created for ${this.state.guest_name}`
     alert(name)
     this.props.history.push('/')

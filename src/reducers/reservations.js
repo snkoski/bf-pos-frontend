@@ -1,4 +1,4 @@
-import { RESERVATION_HAS_ERRORED, RESERVATION_IS_LOADING, RESERVATIONS_FETCH_DATA_SUCCESS, NEW_RESERVATION, CANCEL_RESERVATION } from "../actions/types";
+import { RESERVATION_HAS_ERRORED, RESERVATION_IS_LOADING, RESERVATIONS_FETCH_DATA_SUCCESS, NEW_RESERVATION, CANCEL_RESERVATION, SEAT_RESERVATION } from "../actions/types";
 
 export function reservationsHasErrored(state = false, action) {
   switch (action.type) {
@@ -42,7 +42,7 @@ export function reservations(state = [], action) {
 
 
     let firstReservations = action.reservations.filter(reservation => {
-      return (reservation.cancelled === false && reservation.date.slice(0,10) === today)
+      return (reservation.cancelled === false && reservation.seated !== true && reservation.date.slice(0,10) === today)
     })
 
 
@@ -53,6 +53,12 @@ export function reservations(state = [], action) {
     })
 
       return firstReservations;
+
+      case SEAT_RESERVATION:
+      let seatedReservations = state.filter(reservation => {
+        return reservation.id !== action.id
+      })
+      return seatedReservations;
 
 
     case CANCEL_RESERVATION:

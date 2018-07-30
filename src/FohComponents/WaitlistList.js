@@ -4,7 +4,7 @@ import { withRouter, Link } from 'react-router-dom';
 import WaitlistCard from './WaitlistCard';
 
 import { connect } from 'react-redux';
-import { waitlistFetchData } from '../actions/waitlist';
+
 
 class WaitlistList extends React.Component {
 
