@@ -10,6 +10,7 @@ import WaitlistList from "./WaitlistList";
 import OpenTableList from "./OpenTableList";
 import SeatedTableList from "./SeatedTableList";
 import OrderForm from "./OrderForm";
+import WaitlistForm from "./WaitlistForm";
 
 import TableSvg from "./TableSvg";
 import ReservationForm from "./ReservationForm";
@@ -18,15 +19,22 @@ class FohContainer extends React.Component {
 
   render() {
 // console.log("FOH CONTAINER: ", this.props);
+
     return(
 
       <Grid>
         <Grid.Column width={12}>
           {/* <h1 className="anh1">Hello</h1> */}
+
           <Switch>
 
-            <Route path='/order/:value' component={OrderForm} />
+
             <Route path='/reservation' component={ReservationForm} />
+            <Route path='/waitlist' component={WaitlistForm} />
+            {/* <Route path={`/order/:value`} component={OrderForm} /> */}
+            <Route path={`/order/:value`} render={(() => {
+              return <OrderForm table={this.props.selectedTable}/>
+            })}/>
             <Route path='/' component={TableSvg} last={this.props.lastTable} />
           </Switch>
         </Grid.Column>
@@ -52,7 +60,8 @@ const mapStateToProps = (state) => {
     static_tables: state.static_tables,
     tables: state.tables,
     customers: state.customers,
-    lastTable: state.lastTable
+    lastTable: state.lastTable,
+    selectedTable: state.selectedTable
   };
 };
 

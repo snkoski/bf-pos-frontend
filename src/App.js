@@ -46,7 +46,10 @@ const mapStateToProps = (state) => {
     customers: state.customers,
     reservations: state.reservations,
     recipes: state.recipes,
-    orders: state.orders
+    orders: state.orders,
+    waitlist: state.waitlist,
+    selectedTable: state.selectedTable,
+    lastTable: state.lastTable
   };
 };
 

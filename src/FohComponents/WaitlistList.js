@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 import WaitlistCard from './WaitlistCard';
 
@@ -17,7 +17,8 @@ class WaitlistList extends React.Component {
   render() {
     return(
       <div>
-        <h1>Waitlist</h1>
+        <h1>Current Waitlist</h1>
+        <h4><Link to='/waitlist'>Add Waitlist</Link></h4>
         <ul>
           {this.renderWaitlistCards()}
         </ul>

@@ -1,4 +1,4 @@
-import { STATIC_TABLE_FETCH_SUCCESS, STATIC_SEAT_TABLE, STATIC_CLEAR_TABLE, TABLE_FETCH_SUCCESS, CREATE_TABLE, CLEAR_TABLE } from "../actions/types";
+import { STATIC_TABLE_FETCH_SUCCESS, STATIC_SEAT_TABLE, STATIC_CLEAR_TABLE, TABLE_FETCH_SUCCESS, CREATE_TABLE, CLEAR_TABLE, SELECT_TABLE } from "../actions/types";
 
 export function static_tables(state = [], action) {
 
@@ -29,7 +29,8 @@ export function static_tables(state = [], action) {
   }
 }
 
-export function lastTable(state={}, action) {
+export function lastTable(state=
+{id: 292, user_id: 1, occupied: true}, action) {
 
   switch (action.type) {
 
@@ -47,6 +48,16 @@ export function lastTable(state={}, action) {
   default:
     return state;
 }
+}
+
+export function selectedTable(state={}, action) {
+  switch (action.type) {
+    case SELECT_TABLE:
+      return action.table
+
+      default:
+        return state;
+  }
 }
 
 export function tables(state=[], action) {
@@ -69,7 +80,7 @@ export function tables(state=[], action) {
         return table.id !== action.id
       })
         return clearedTable;
-  
+
     default:
       return state;
   }

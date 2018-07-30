@@ -21,13 +21,27 @@ export function reservationsIsLoading(state = false, action) {
 export function reservations(state = [], action) {
   switch (action.type) {
     case NEW_RESERVATION:
+      let newReservations = [...state, action.reservations]
 
-      return [...state, action.reservations];
+      newReservations.sort(function(a, b) {
+        a = new Date(a.time)
+        b = new Date(b.time)
+        return a < b ? -1 : a > b ? 1 : 0
+      })
+      return newReservations;
 
     case RESERVATIONS_FETCH_DATA_SUCCESS:
     let firstReservations = action.reservations.filter(reservation => {
       return reservation.cancelled === false
     })
+
+    
+    firstReservations.sort(function(a, b) {
+      a = new Date(a.time)
+      b = new Date(b.time)
+      return a < b ? -1 : a > b ? 1 : 0
+    })
+
       return firstReservations;
 
 
