@@ -36,6 +36,7 @@ class SeatedTableCard extends React.Component {
   }
 
   checkReservations = () => {
+    debugger
     if (this.props.reservations.length > 0) {
       alert('there are reservations')
     }

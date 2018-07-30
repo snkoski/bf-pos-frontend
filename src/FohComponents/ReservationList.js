@@ -21,7 +21,7 @@ class ReservationList extends React.Component {
   }
 
   renderReservationsCards() {
-
+// debugger
     return this.props.reservations.map(reservation => {
       return <ReservationCard key={reservation.id} reservation={reservation} />
     })
