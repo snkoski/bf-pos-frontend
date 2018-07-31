@@ -5,7 +5,7 @@ import { static_tables, tables, lastTable, selectedTable } from "./tables";
 import { customers } from "./customers";
 import { recipes } from "./recipes";
 import { orders } from "./orders";
-import { currentTab } from "./navBar";
+import { currentTab, currentDepartment } from "./navBar";
 
 export default combineReducers({
   reservations,
@@ -21,5 +21,6 @@ export default combineReducers({
   recipes,
   orders,
   selectedTable,
-  currentTab
+  currentTab,
+  currentDepartment
 });

@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import './App.css';
 import NavBar from './NavBar'
 import FohContainer from './FohComponents/FohContainer'
+import BohContainer from './BohComponents/BohContainer'
 import { connect } from 'react-redux';
 import {withRouter} from 'react-router'
 
@@ -33,7 +34,7 @@ console.log("APP.JS", this.props);
         <div>
           <NavBar />
 
-          <FohContainer />
+          {this.props.currentDepartment === "foh" ? <FohContainer /> : <BohContainer />}
         </div>
     );
 
@@ -50,7 +51,8 @@ const mapStateToProps = (state) => {
     waitlist: state.waitlist,
     selectedTable: state.selectedTable,
     lastTable: state.lastTable,
-    currentTab: state.currentTab
+    currentTab: state.currentTab,
+    currentDepartment: state.currentDepartment
   };
 };
 
