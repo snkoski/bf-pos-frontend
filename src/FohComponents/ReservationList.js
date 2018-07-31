@@ -37,7 +37,7 @@ class ReservationList extends React.Component {
       return <p>Loading...</p>;
     }
     return(
-      <div>
+      <div className="reservations">
         <h1>Reservations</h1>
         <h4><Link to='/reservation'>Add Reservation</Link></h4>
         {/* <h4 onClick={this.handleRoute}>make reservation</h4> */}

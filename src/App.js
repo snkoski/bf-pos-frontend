@@ -49,7 +49,8 @@ const mapStateToProps = (state) => {
     orders: state.orders,
     waitlist: state.waitlist,
     selectedTable: state.selectedTable,
-    lastTable: state.lastTable
+    lastTable: state.lastTable,
+    currentTab: state.currentTab
   };
 };
 

@@ -6,7 +6,7 @@ class OpenTableList extends React.Component {
 
   render() {
     return(
-      <div>
+      <div className="open-tables">
         <h1>Open Tables</h1>
         {this.props.static_tables.map(table => {
           if (table.occupied === false) {

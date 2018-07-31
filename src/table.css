@@ -1,5 +1,5 @@
 .rect {
-  fill: rgb(0,0,255);
+  fill: #bcd2c8;
   strokeWidth: 3;
   stroke: rgb(0,0,0);
 }
@@ -23,7 +23,10 @@
 }
 
 .circle {
-  fill: red;
+  fill: #d9a095;
+  stroke: #a36167;
+  stroke-width: 4px;
+  /* f6f4f1 */
 }
 /*
 .circle[occupied] {
@@ -32,5 +35,38 @@
 
 .table-order {
   text-align: center;
+  color: red;
+}
+
+.open-tables {
+  /* height: auto; */
+  overflow-y: scroll;
+}
+
+.reservations {
+  /* border: 5px solid red; */
+  height: 200px;
+  overflow-y: scroll;
+  padding: 5px;
+}
+
+.foh-side {
+
+  padding: 50px;
+}
+
+.whole-grid {
+  border: 5px solid black;
+  padding: 5px;
+  margin: 5px;
+  height: 100%;
+}
+
+.whole-div {
+  border: 15px solid pink;
+  height: 100%;
+}
+
+.menu-reservation {
   color: red;
 }

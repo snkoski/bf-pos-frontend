@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 
 class TableSvg extends React.Component {
-  
+
 
   setTables() {
     if (this.props.tables.length > 0 && this.props.static_tables.length > 0) {
@@ -70,11 +70,11 @@ class TableSvg extends React.Component {
     return (<div className="svg-container">
       <svg viewBox="0 0 500 500" preserveAspectRatio="xMinYMin" width="100%" height="auto">
         <rect className="rect" width="100%" height="95vh"/>
-        <circle id="1" className="circle" cx="150" cy="100" r="75" stroke="green" strokeWidth="4" onClick={(this.handleClick.bind(this))}/>
+        <circle id="1" className="circle" cx="150" cy="100" r="40"   onClick={(this.handleClick.bind(this))}/>
 
-        <circle id="2" className="circle" cx="400" cy="100" r="75" stroke="green" strokeWidth="4" fill="yellow" onClick={(this.handleClick.bind(this))}/>
+        <circle id="2" className="circle" cx="400" cy="100" r="40"    onClick={(this.handleClick.bind(this))}/>
 
-        <circle id="3" className="circle" cx="150" cy="350" r="75" stroke="green" strokeWidth="4" fill="yellow" onClick={(this.handleClick.bind(this))}></circle>
+        <circle id="3" className="circle" cx="150" cy="350" r="40"    onClick={(this.handleClick.bind(this))}></circle>
         {/* <defs>
             <filter id="f1" x="0" y="0">
               <feGaussianBlur in="SourceGraphic" stdDeviation="15" />

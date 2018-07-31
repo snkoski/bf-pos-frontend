@@ -22,7 +22,7 @@ class SeatedTableCard extends React.Component {
       this.props.removeCustomerFetch(customer.id)
     })
     this.props.history.push('/')
-    if (this.props.reservations.length > 0) {
+    if (this.props.reservations.length > 0 && this.upcomingReservation(this.props.reservations[0])) {
       this.checkReservations()
   }else if (this.props.waitlist.length > 0) {
     this.checkWaitlist()
@@ -41,14 +41,38 @@ class SeatedTableCard extends React.Component {
     }
   }
 
+  getNowTime = () => {
+    let today = new Date()
+    let hours = today.getHours()
+    let minutes = today.getMinutes()
+
+    return (hours * 60) + minutes
+  }
+
+  getReservationTime = (reservation) => {
+    // debugger
+    let reservationTime = reservation.time
+    let reservationTimeArray = reservationTime.slice(11, 16).split(':')
+    return (reservationTimeArray[0] * 60) + (reservationTimeArray[1] * 1)
+  }
+
+  upcomingReservation = (reservation) => {
+    if (this.getReservationTime(reservation) - this.getNowTime() <= 15 ) {
+      return true
+    }
+    return false
+  }
+
   checkReservations = () => {
     // debugger
-    if (this.props.reservations.length > 0) {
-      let nextGroupSize = this.props.reservations[0].number_of_guests
-      alert(`Now seating: ${this.props.reservations[0].guest_name}`)
-      this.props.seatReservationFetch(this.props.reservations[0].id)
-      this.seatReservation()
-    }
+
+
+        let nextGroupSize = this.props.reservations[0].number_of_guests
+        alert(`Now seating: ${this.props.reservations[0].guest_name}`)
+        this.props.seatReservationFetch(this.props.reservations[0].id)
+        this.seatReservation()
+
+
   }
 
   seatReservation = () => {
@@ -88,10 +112,10 @@ class SeatedTableCard extends React.Component {
 
   selectTable = () => {
     this.props.selectedTable(this.props.table)
-    // this.props.history.push(`/order/${this.props.selectedTable.id}`)
   }
 
   render() {
+    // debugger
 console.log("SEATED TABLE CARD: ", this.props);
   return <div key={this.props.table.id + 'div'}>
     <p key={this.props.table.id}> Table {this.props.table.table_number}</p>
