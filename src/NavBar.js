@@ -16,6 +16,9 @@ handleClick = (e) => {
     return(
       <div>
         <Menu>
+          <Menu.Item>
+            <Button>BOH</Button>
+          </Menu.Item>
           <Menu.Item name='date'>
             {(new Date()).toLocaleDateString('en-US')}
           </Menu.Item>

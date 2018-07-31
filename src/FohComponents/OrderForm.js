@@ -29,7 +29,8 @@ class OrderForm extends React.Component {
   }
 
   render() {
-    console.log("ORDER FORM", this.props.selectedTable.id);
+    console.log("ORDER FORM", this.props);
+    console.log(this.state);
 // debugger
     let currentTable = this.props.tables.find(table => {
       return table.id === this.state.table_num
