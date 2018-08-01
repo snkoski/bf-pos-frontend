@@ -6,6 +6,9 @@ import { customers } from "./customers";
 import { recipes } from "./recipes";
 import { orders } from "./orders";
 import { currentTab, currentDepartment } from "./navBar";
+import { recipeIngredients } from "./recipeIngredients";
+import { usedIngredients } from "./usedIngredients";
+import { recipeProportions } from "./recipeProportions";
 
 export default combineReducers({
   reservations,
@@ -22,5 +25,8 @@ export default combineReducers({
   orders,
   selectedTable,
   currentTab,
-  currentDepartment
+  currentDepartment,
+  recipeIngredients,
+  usedIngredients,
+  recipeProportions
 });

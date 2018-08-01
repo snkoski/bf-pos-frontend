@@ -2,6 +2,8 @@ import React from 'react';
 import {connect} from "react-redux";
 import {withRouter} from 'react-router'
 import {newOrderFetch} from '../actions/orders';
+import {recipeIngredientFetchData} from '../actions/recipeIngredient';
+import {recipeProportionFetchData} from '../actions/recipeProportions';
 
 class CustomerCard extends React.Component {
   constructor(props) {
@@ -22,8 +24,16 @@ class CustomerCard extends React.Component {
   };
 
   handleSubmit = (e) => {
+    debugger
     e.preventDefault()
     this.props.newOrderFetch({customer_id: this.props.customer.id, recipe_id: this.state.recipe_id})
+  }
+
+  handleModify = (e) => {
+    e.preventDefault()
+    this.props.recipeIngredientFetchData(this.state.recipe_id)
+    console.log(this.props.recipeIngredients);
+    this.props.recipeProportionFetchData(this.state.recipe_id)
   }
 
   render() {
@@ -55,7 +65,9 @@ class CustomerCard extends React.Component {
           }
         </select>
         <button type='submit'>place order</button>
+        <button onClick={this.handleModify}>modify order</button>
       </form>
+
       <h3>Orders</h3>
       <ul>
         {
@@ -70,7 +82,7 @@ class CustomerCard extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return {recipes: state.recipes, orders: state.orders};
+  return {recipes: state.recipes, orders: state.orders, recipeIngredients: state.recipeIngredients, recipeProportions: state.recipeProportions};
 };
 
-export default withRouter(connect(mapStateToProps, {newOrderFetch})(CustomerCard));
+export default withRouter(connect(mapStateToProps, {newOrderFetch, recipeIngredientFetchData, recipeProportionFetchData})(CustomerCard));
