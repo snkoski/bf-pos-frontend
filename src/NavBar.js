@@ -5,6 +5,8 @@ import Clock from 'react-live-clock';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { changeCurrentTab, changeDepartment } from "./actions/navBar";
+
+
 class NavBar extends React.Component {
 
 handleTabClick = (e) => {
@@ -38,13 +40,13 @@ handleDepartmentClick = (e) => {
           </Menu.Item>
           <Menu.Menu position="right">
             <Menu.Item  >
-              <Button onClick={this.handleTabClick} color="pink" value="tables" >Tables</Button>
+              <Button className="nav-button-right" onClick={this.handleTabClick} value="tables" >Tables</Button>
             </Menu.Item>
             <Menu.Item  >
-              <Button onClick={this.handleTabClick} color="pink" value="waitlist" >Waitlist</Button>
+              <Button className="nav-button-right" onClick={this.handleTabClick} value="waitlist" >Waitlist</Button>
             </Menu.Item>
             <Menu.Item  >
-              <Button onClick={this.handleTabClick} color="pink" value="reservations" >Reservations</Button>
+              <Button className="nav-button-right" onClick={this.handleTabClick} value="reservations" >Reservations</Button>
             </Menu.Item>
 
           </Menu.Menu>

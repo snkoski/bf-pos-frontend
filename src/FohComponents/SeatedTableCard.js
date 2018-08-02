@@ -6,8 +6,17 @@ import { newTableFetch } from "../actions/tables";
 import { seatReservationFetch } from "../actions/reservations";
 import { connect } from 'react-redux';
 import { Link, withRouter } from "react-router-dom";
+import { Button, Modal, Icon } from 'semantic-ui-react'
 
 class SeatedTableCard extends React.Component {
+
+state = {
+  open: false,
+  nextGuest: ""
+}
+
+  show = () => this.setState({ open: true })
+  close = () => this.setState({ open: false })
 
   removeTable = () => {
 
@@ -23,6 +32,7 @@ class SeatedTableCard extends React.Component {
     })
     this.props.history.push('/')
     if (this.props.reservations.length > 0 && this.upcomingReservation(this.props.reservations[0])) {
+
       this.checkReservations()
   }else if (this.props.waitlist.length > 0) {
     this.checkWaitlist()
@@ -31,6 +41,33 @@ class SeatedTableCard extends React.Component {
   }
     console.log("TC", tableCustomers);
   }
+
+// removeTable = () => {
+//
+//   let tableCustomers = this.props.customers.filter(customer => {
+//     return customer.table_id === this.props.table.id
+//   })
+// // debugger
+//
+//   this.props.clearTableFetch(this.props.table.id)
+// // debugger
+//   tableCustomers.forEach(customer => {
+//     this.props.removeCustomerFetch(customer.id)
+//   })
+//
+//
+//   this.props.staticClearTableFetch(this.props.table.table_number)
+//
+//
+// }
+
+// this.props.history.push('/')
+// if (this.props.reservations.length > 0 && this.upcomingReservation(this.props.reservations[0])) {
+//   this.checkReservations()
+// }else if (this.props.waitlist.length > 0) {
+// this.checkWaitlist()
+
+
 
   seatCustomer = (numberOfCustomers, table) => {
     for (let i = 0; i < numberOfCustomers; i++) {
@@ -68,7 +105,7 @@ class SeatedTableCard extends React.Component {
 
 
         let nextGroupSize = this.props.reservations[0].number_of_guests
-        alert(`Now seating: ${this.props.reservations[0].guest_name}`)
+        // alert(`Now seating: ${this.props.reservations[0].guest_name}`)
         this.props.seatReservationFetch(this.props.reservations[0].id)
         this.seatReservation()
 
@@ -121,9 +158,24 @@ console.log("SEATED TABLE CARD: ", this.props);
     <p key={this.props.table.id}> Table {this.props.table.table_number}</p>
 
     <h4 onClick={this.selectTable}><Link to={`/order/${this.props.table.id}` }>Add Order</Link></h4>
+    
+    <Button onClick={this.show}>Clear</Button>
+    <Modal size='samll' open={this.state.open} onClose={this.close}>
+      <Modal.Header>Clear Table?</Modal.Header>
+      <Modal.Content>
+        <p>Clear Table {this.props.table.table_number} and seat next customer?</p>
+      </Modal.Content>
+      <Modal.Actions>
+        <Button onClick={this.close} negative>No</Button>
+        <Button onClick={this.removeTable}positive icon='checkmark' labelPosition='right' content='Yes' />
+      </Modal.Actions>
+    </Modal>
 
-    <button key={this.props.table.id + this.props.table.occupied} onClick={this.removeTable}>clear table</button>
-      </div>
+
+
+
+
+  </div>
     }
  }
 

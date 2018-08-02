@@ -111,28 +111,20 @@ height: 600
 .waitlist-name {
   padding-top: 100px;
 }
-/* .form.res-form { */
+.ui.button.nav-button-right {
+  background-color: #d9a095;
+}
 
-/* padding: -20px; */
-  /* margin: -5px; */
-  /* height: 600px; */
-  /* outline: 20px solid red; */
-  /* border-top: 25px dotted #f6f4f1; */
-  /* border-bottom: 25px dotted #f6f4f1; */
-/* } */
 
-/* .outer-res {
-  border: 20px solid green;
-  margin: 10px;
-} */
-/* .form:before {
-  content: " ";
-  position: absolute;
-  z-index: -1;
-  top: 20px;
-  left: 5px;
-  right: 5px;
-  bottom: 5px;
-  border: 5px solid blue;
-  outline: 5px solid red;
-} */
+
+.seated-cards {
+  max-height: 280px;
+  height: auto;
+  overflow-y: scroll;
+  padding-left: 15px;
+}
+.open-cards {
+  max-height: 290px;
+  overflow-y: scroll;
+  padding-left: 15px;
+}

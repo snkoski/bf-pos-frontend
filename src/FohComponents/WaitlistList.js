@@ -17,8 +17,11 @@ class WaitlistList extends React.Component {
   render() {
     return(
       <div>
-        <h1>Current Waitlist</h1>
-        <h4><Link to='/waitlist'>Add Waitlist</Link></h4>
+        <h1 style={{
+          textAlign: "center", paddingTop: "10px"
+        }} >Current Waitlist</h1>
+        <h4 style={{
+        textAlign: "center", marginTop: "-15px"}}><Link to='/waitlist'>Add Waitlist</Link></h4>
         <ul>
           {this.renderWaitlistCards()}
         </ul>

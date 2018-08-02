@@ -37,8 +37,11 @@ class ReservationList extends React.Component {
       return <p>Loading...</p>;
     }
     return(<div>
-      <h1>Reservations</h1>
-      <h4><Link to='/reservation'>Add Reservation</Link></h4>
+      <h1 style={{
+        textAlign: "center", paddingTop: "10px"
+      }}>Reservations</h1>
+      <h4 style={{
+      textAlign: "center", marginTop: "-15px"}}><Link to='/reservation'>Add Reservation</Link></h4>
       <div className="reservations">
 
         {/* <h4 onClick={this.handleRoute}>make reservation</h4> */}

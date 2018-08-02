@@ -24,14 +24,16 @@ renderSeatedTableCards() {
     return(
 
       <div>
-        <h1>Seated Tables</h1>
+        <h1 style={{
+          textAlign: "center", paddingTop: "2px"
+        }}>Seated Tables</h1>
 
 
 
+        <div className="seated-cards">
+          {this.renderSeatedTableCards()}
+        </div>
 
-        {this.renderSeatedTableCards()}
-
-        
       </div>
 
           )
