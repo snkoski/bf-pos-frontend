@@ -4,6 +4,7 @@ import {withRouter} from 'react-router'
 import {newOrderFetch} from '../actions/orders';
 import {recipeIngredientFetchData} from '../actions/recipeIngredient';
 import {recipeProportionFetchData} from '../actions/recipeProportions';
+import {newUsedIngredientFetch} from '../actions/usedIngredients';
 
 class CustomerCard extends React.Component {
   constructor(props) {
@@ -24,17 +25,58 @@ class CustomerCard extends React.Component {
   };
 
   handleSubmit = (e) => {
-    debugger
+
     e.preventDefault()
+
     this.props.newOrderFetch({customer_id: this.props.customer.id, recipe_id: this.state.recipe_id})
+
+    this.props.recipeIngredientFetchData(this.state.recipe_id)
+    console.log("RED ING", this.props.recipeIngredients);
+    this.props.recipeProportionFetchData(this.state.recipe_id)
+
+    console.log("RED ING 2", this.props.recipeIngredients);
+    this.props.recipeIngredients.map((ing, index) => {
+      this.props.newUsedIngredientFetch({name: ing.name, amount: this.props.recipeProportions[index].amount})
+    })
+    // this.takeOrder()
+    // .then(([one, two, three]) => {console.log("LOG", one, two, three)})
+// this.inputUsedIngredients()
   }
 
-  handleModify = (e) => {
-    e.preventDefault()
-    this.props.recipeIngredientFetchData(this.state.recipe_id)
-    console.log(this.props.recipeIngredients);
-    this.props.recipeProportionFetchData(this.state.recipe_id)
+  takeOrder = () => {
+     Promise.all(this.props.newOrderFetch({customer_id: this.props.customer.id, recipe_id: this.state.recipe_id}), this.props.recipeIngredientFetchData(this.state.recipe_id), this.props.recipeProportionFetchData(this.state.recipe_id)).then(result => { console.log("FIRST", result); return result})
   }
+  //
+  // takeOrder = () => {
+  //   dispatch(this.props.newOrderFetch({customer_id: this.props.customer.id, recipe_id: this.state.recipe_id}))
+  //   dispatch(this.props.recipeIngredientFetchData(this.state.recipe_id))
+  //   dispatch(this.props.recipeProportionFetchData(this.state.recipe_id))
+  // }
+
+  // takeOrder = () => (
+  //   (dispatch) => {
+  //     this.props.newOrderFetch({customer_id: this.props.customer.id, recipe_id: this.state.recipe_id}).then(() => (
+  //       dispatch(this.props.recipeIngredientFetchData(this.state.recipe_id))
+  //     )).then(() => (
+  //       dispatch(this.props.recipeProportionFetchData(this.state.recipe_id))
+  //     ))
+  //   }
+  // )
+
+
+
+  inputUsedIngredients = () => {
+    console.log("USED ING", this.props.recipeIngredients);
+    console.log("USED PROPORS", this.props.recipeProportions);
+  }
+
+
+  // handleModify = (e) => {
+  //   e.preventDefault()
+  //   this.props.recipeIngredientFetchData(this.state.recipe_id)
+  //   console.log(this.props.recipeIngredients);
+  //   this.props.recipeProportionFetchData(this.state.recipe_id)
+  // }
 
   render() {
     let customerOrders = this.props.orders.filter(orders => {
@@ -82,7 +124,7 @@ class CustomerCard extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return {recipes: state.recipes, orders: state.orders, recipeIngredients: state.recipeIngredients, recipeProportions: state.recipeProportions};
+  return {recipes: state.recipes, orders: state.orders, recipeIngredients: state.recipeIngredients, recipeProportions: state.recipeProportions, usedIngredients: state.usedIngredients};
 };
 
-export default withRouter(connect(mapStateToProps, {newOrderFetch, recipeIngredientFetchData, recipeProportionFetchData})(CustomerCard));
+export default withRouter(connect(mapStateToProps, {newOrderFetch, recipeIngredientFetchData, recipeProportionFetchData, newUsedIngredientFetch})(CustomerCard));

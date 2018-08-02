@@ -70,18 +70,50 @@ class TableSvg extends React.Component {
     return (<div className="svg-container">
       <svg viewBox="0 0 500 500" preserveAspectRatio="xMinYMin" width="100%" height="auto">
         <rect className="rect" width="100%" height="95vh"/>
-        <circle id="1" className="circle" cx="150" cy="100" r="40"   onClick={(this.handleClick.bind(this))}/>
-
-        <circle id="2" className="circle" cx="400" cy="100" r="40"    onClick={(this.handleClick.bind(this))}/>
-
-        <circle id="3" className="circle" cx="150" cy="350" r="40"    onClick={(this.handleClick.bind(this))}></circle>
-        {/* <defs>
-            <filter id="f1" x="0" y="0">
-              <feGaussianBlur in="SourceGraphic" stdDeviation="15" />
-            </filter>
-            </defs>
-          <rect className="rect small" width="90" height="90" x="50%" filter="url(#f1)" /> */
-        }
+        <g>
+          <circle id="1" className="circle" cx="70" cy="70" r="40"   onClick={(this.handleClick.bind(this))}/>
+          <text x="65" y="44" font-family="Verdana" font-size="15" fill="blue">1</text>
+        </g>
+        <g>
+          <circle id="2" className="circle" cx="70" cy="190" r="40"    onClick={(this.handleClick.bind(this))}/>
+          <text x="65" y="164" font-family="Verdana" font-size="15" fill="blue">2</text>
+        </g>
+        <g>
+          <circle id="3" className="circle" cx="70" cy="310" r="40"    onClick={(this.handleClick.bind(this))}></circle>
+          <text x="65" y="284" font-family="Verdana" font-size="15" fill="blue">3</text>
+        </g>
+        <g>
+          <circle id="4" className="circle" cx="70" cy="430" r="40"    onClick={(this.handleClick.bind(this))}></circle>
+          <text x="65" y="404" font-family="Verdana" font-size="15" fill="blue">4</text>
+        </g>
+        <g>
+          <circle id="5" className="circle" cx="200" cy="70" r="40"    onClick={(this.handleClick.bind(this))}></circle>
+          <text x="195" y="44" font-family="Verdana" font-size="15" fill="blue">5</text>
+        </g>
+        <g>
+          <circle id="6" className="circle" cx="200" cy="190" r="40"    onClick={(this.handleClick.bind(this))}></circle>
+          <text x="195" y="164" font-family="Verdana" font-size="15" fill="blue">6</text>
+        </g>
+        <g>
+          <circle id="7" className="circle" cx="200" cy="310" r="40"    onClick={(this.handleClick.bind(this))}></circle>
+          <text x="195" y="284" font-family="Verdana" font-size="15" fill="blue">7</text>
+        </g>
+        <g>
+          <circle id="8" className="circle" cx="200" cy="430" r="40"    onClick={(this.handleClick.bind(this))}></circle>
+          <text x="195" y="404" font-family="Verdana" font-size="15" fill="blue">8</text>
+        </g>
+        <g>
+          <circle id="9" className="circle" cx="330" cy="130" r="40"    onClick={(this.handleClick.bind(this))}></circle>
+          <text x="325" y="104" font-family="Verdana" font-size="15" fill="blue">9</text>
+        </g>
+        <g>
+          <circle id="10" className="circle" cx="330" cy="250" r="40"    onClick={(this.handleClick.bind(this))}></circle>
+          <text x="320" y="224" font-family="Verdana" font-size="15" fill="blue">10</text>
+        </g>
+        <g>
+          <circle id="11" className="circle" cx="330" cy="370" r="40"    onClick={(this.handleClick.bind(this))}></circle>
+          <text x="320" y="344" font-family="Verdana" font-size="15" fill="blue">11</text>
+        </g>
 
       </svg>
 

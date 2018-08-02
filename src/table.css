@@ -38,10 +38,10 @@
   color: red;
 }
 
-.open-tables {
-  /* height: auto; */
+/* .open-tables {
+  height: auto;
   overflow-y: scroll;
-}
+} */
 
 .reservations {
   /* border: 5px solid red; */

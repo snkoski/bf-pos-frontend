@@ -8,5 +8,6 @@ export const recipeIngredientFetchData = (id) => {
   return(dispatch) => {
     fetch("http://localhost:3000/api/v1/recipes/" + id + "/ingredients")
     .then((response) => response.json()).then((ingredients) => dispatch(recipeIngredientFetch(ingredients)))
+    
   }
 }
