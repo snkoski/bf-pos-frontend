@@ -68,9 +68,10 @@ class TableSvg extends React.Component {
     // console.log(this.state);
     // console.log(this.props);
     return (<div className="svg-container">
-      <svg className="form-svg" viewBox="0 0 650 500" preserveAspectRatio="xMinYMin" width="100%" height="auto">
-        <rect className="rect" width="100%" height="95vh"/>
-        <rect className="rect-right-side" x="630" width="20px" height="100vh"/>
+      <svg className="table-svg" viewBox="0 0 650 500" preserveAspectRatio="xMinYMin" width="100%" height="auto">
+        <rect className="rect" x="12" y="12" width="100%" height="70vh"/>
+        <rect className="rect-svg-border" x="630" width="20px" height="100vh"/>
+        <rect className="rect-svg-border" y="498" width="100vh" height="20px"/>
         <g>
           <circle id="1" className="circle" cx="70" cy="70" r="40"   onClick={(this.handleClick.bind(this))}/>
           <text x="65" y="44" font-family="Verdana" font-size="15" fill="#a36167">1</text>

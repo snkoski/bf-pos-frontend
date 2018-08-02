@@ -1,12 +1,17 @@
 .rect {
   fill: #bcd2c8;
   strokeWidth: 3;
-  stroke: rgb(0,0,0);
+  stroke: pink;
 }
 .form-svg .rect-right-side {
   fill: pink;
   strokeWidth: 3;
 
+}
+
+.rect-svg-border {
+  fill: pink;
+  strokeWidth: 3;
 }
 
 .anh1 {
@@ -31,6 +36,7 @@
   fill: #d9a095;
   stroke: #a36167;
   stroke-width: 4px;
+  z-index: 1;
   /* #f6f4f1 */
 }
 /*
@@ -93,6 +99,17 @@
     top: 0;
     z-index: -1;
     height: 600
+}
+
+.table-svg {
+  position: absolute;
+    left: 0;
+    top: 0;
+height: 600
+}
+
+.waitlist-name {
+  padding-top: 100px;
 }
 /* .form.res-form { */
 
