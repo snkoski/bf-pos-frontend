@@ -36,16 +36,18 @@ class ReservationList extends React.Component {
     if (this.props.isLoading) {
       return <p>Loading...</p>;
     }
-    return(
+    return(<div>
+      <h1>Reservations</h1>
+      <h4><Link to='/reservation'>Add Reservation</Link></h4>
       <div className="reservations">
-        <h1>Reservations</h1>
-        <h4><Link to='/reservation'>Add Reservation</Link></h4>
+
         {/* <h4 onClick={this.handleRoute}>make reservation</h4> */}
         <ul>
           {this.renderReservationsCards()}
         </ul>
 
       </div>
+    </div>
 
     )
   }

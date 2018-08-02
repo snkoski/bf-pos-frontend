@@ -3,6 +3,11 @@
   strokeWidth: 3;
   stroke: rgb(0,0,0);
 }
+.form-svg .rect-right-side {
+  fill: pink;
+  strokeWidth: 3;
+
+}
 
 .anh1 {
   color: red;
@@ -26,7 +31,7 @@
   fill: #d9a095;
   stroke: #a36167;
   stroke-width: 4px;
-  /* f6f4f1 */
+  /* #f6f4f1 */
 }
 /*
 .circle[occupied] {
@@ -45,7 +50,7 @@
 
 .reservations {
   /* border: 5px solid red; */
-  height: 200px;
+  height: 500px;
   overflow-y: scroll;
   padding: 5px;
 }
@@ -55,18 +60,62 @@
   padding: 50px;
 }
 
-.whole-grid {
-  border: 5px solid black;
-  padding: 5px;
-  margin: 5px;
-  height: 100%;
+ .whole-grid {
+ /* border: 5px solid black; */
+ padding: 5px;
+ margin: 5px;
+ height: 629px;
 }
 
 .whole-div {
-  border: 15px solid pink;
-  height: 100%;
+  border: 20px solid pink;
+  height: 638px;
+  /* margin: 15px; */
 }
 
 .menu-reservation {
   color: red;
 }
+
+.form {
+
+/* padding: -20px; */
+  /* margin: -5px; */
+  height: 600px;
+  /* outline: 20px solid red; */
+  border: 25px dotted black;
+  position: relative;
+  /* z-index:10; */
+}
+.form-svg {
+  position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    height: 600
+}
+/* .form.res-form { */
+
+/* padding: -20px; */
+  /* margin: -5px; */
+  /* height: 600px; */
+  /* outline: 20px solid red; */
+  /* border-top: 25px dotted #f6f4f1; */
+  /* border-bottom: 25px dotted #f6f4f1; */
+/* } */
+
+/* .outer-res {
+  border: 20px solid green;
+  margin: 10px;
+} */
+/* .form:before {
+  content: " ";
+  position: absolute;
+  z-index: -1;
+  top: 20px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  border: 5px solid blue;
+  outline: 5px solid red;
+} */
