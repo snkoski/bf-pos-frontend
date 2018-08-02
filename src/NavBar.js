@@ -22,9 +22,9 @@ handleDepartmentClick = (e) => {
     return(
       <div>
         <Menu>
-          <Menu.Item>
+          {/* <Menu.Item>
             <Button onClick={this.handleDepartmentClick} value="boh">BOH</Button>
-          </Menu.Item>
+          </Menu.Item> */}
           <Menu.Item>
             <Button onClick={this.handleDepartmentClick} value="foh">FOH</Button>
           </Menu.Item>

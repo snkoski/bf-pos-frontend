@@ -18,7 +18,7 @@ class WaitlistList extends React.Component {
     return(
       <div>
         <h1 style={{
-          textAlign: "center", paddingTop: "10px"
+          textAlign: "center", paddingTop: "10px", color: "#a36167"
         }} >Current Waitlist</h1>
         <h4 style={{
         textAlign: "center", marginTop: "-15px"}}><Link to='/waitlist'>Add Waitlist</Link></h4>

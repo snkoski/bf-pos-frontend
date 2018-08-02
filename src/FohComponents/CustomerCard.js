@@ -5,6 +5,7 @@ import {newOrderFetch} from '../actions/orders';
 import {recipeIngredientFetchData} from '../actions/recipeIngredient';
 import {recipeProportionFetchData} from '../actions/recipeProportions';
 import {newUsedIngredientFetch} from '../actions/usedIngredients';
+import { Card, Dropdown, Button, Form } from 'semantic-ui-react'
 
 class CustomerCard extends React.Component {
   constructor(props) {
@@ -34,34 +35,15 @@ class CustomerCard extends React.Component {
     console.log("RED ING", this.props.recipeIngredients);
     this.props.recipeProportionFetchData(this.state.recipe_id)
 
-    console.log("RED ING 2", this.props.recipeIngredients);
-    this.props.recipeIngredients.map((ing, index) => {
-      this.props.newUsedIngredientFetch({name: ing.name, amount: this.props.recipeProportions[index].amount})
-    })
+    // console.log("RED ING 2", this.props.recipeIngredients);
+    // this.props.recipeIngredients.map((ing, index) => {
+    //   this.props.newUsedIngredientFetch({name: ing.name, amount: this.props.recipeProportions[index].amount})
+    // })
     // this.takeOrder()
     // .then(([one, two, three]) => {console.log("LOG", one, two, three)})
 // this.inputUsedIngredients()
   }
 
-  takeOrder = () => {
-     Promise.all(this.props.newOrderFetch({customer_id: this.props.customer.id, recipe_id: this.state.recipe_id}), this.props.recipeIngredientFetchData(this.state.recipe_id), this.props.recipeProportionFetchData(this.state.recipe_id)).then(result => { console.log("FIRST", result); return result})
-  }
-  //
-  // takeOrder = () => {
-  //   dispatch(this.props.newOrderFetch({customer_id: this.props.customer.id, recipe_id: this.state.recipe_id}))
-  //   dispatch(this.props.recipeIngredientFetchData(this.state.recipe_id))
-  //   dispatch(this.props.recipeProportionFetchData(this.state.recipe_id))
-  // }
-
-  // takeOrder = () => (
-  //   (dispatch) => {
-  //     this.props.newOrderFetch({customer_id: this.props.customer.id, recipe_id: this.state.recipe_id}).then(() => (
-  //       dispatch(this.props.recipeIngredientFetchData(this.state.recipe_id))
-  //     )).then(() => (
-  //       dispatch(this.props.recipeProportionFetchData(this.state.recipe_id))
-  //     ))
-  //   }
-  // )
 
 
 
@@ -71,12 +53,6 @@ class CustomerCard extends React.Component {
   }
 
 
-  // handleModify = (e) => {
-  //   e.preventDefault()
-  //   this.props.recipeIngredientFetchData(this.state.recipe_id)
-  //   console.log(this.props.recipeIngredients);
-  //   this.props.recipeProportionFetchData(this.state.recipe_id)
-  // }
 
   render() {
     let customerOrders = this.props.orders.filter(orders => {
@@ -91,35 +67,43 @@ class CustomerCard extends React.Component {
     console.log("ORDERS", customerOrders);
     console.log("RECIPES", customerRecipes);
     return (<li>
-      <h1>Seat {this.props.customer.seat_number}</h1>
+      {/* <h1>Seat {this.props.customer.seat_number}</h1> */}
+      <Card className="customer-card">
+        <h1 style={{textAlign: "center",
+        color: "#a36167"}}>Seat {this.props.customer.seat_number}</h1>
+        <Form className="customer-order" onSubmit={this.handleSubmit}>
+          {/* <label>Recipe</label> */}
+          <div className="inline fields">
+            <div className="field">
+              <select className="order-select" onChange={this.handleChange} value={this.state.recipe_id} name='destination_id'>
 
-      <form onSubmit={this.handleSubmit}>
-        <label>Recipe</label>
-        <select onChange={this.handleChange} value={this.state.recipe_id} name='destination_id'>
+                <option selected="selected">
+                  -- select a recipe --
+                </option>
+                {
+                  this.props.recipes.map((recipe) => {
+                    return <option value={recipe.id} key={recipe.id}>{recipe.name}</option>
+                  })
+                }
+              </select>
+            </div>
+            <div className="field">
+              <button type='submit'>place order</button>
+            </div>
+          </div>
+        </Form>
 
-          <option selected="selected">
-            -- select a recipe --
-          </option>
+        <h3 style={{textAlign: "center",
+        color: "#a36167"}}>Orders</h3>
+        <ul>
           {
-            this.props.recipes.map((recipe) => {
-              return <option value={recipe.id} key={recipe.id}>{recipe.name}</option>
+            customerRecipes.map(recipe => {
+              return <li>{recipe.name}</li>
             })
           }
-        </select>
-        <button type='submit'>place order</button>
-        <button onClick={this.handleModify}>modify order</button>
-      </form>
-
-      <h3>Orders</h3>
-      <ul>
-        {
-          customerRecipes.map(recipe => {
-            return <li>{recipe.name}</li>
-          })
-        }
-      </ul>
-
-    </li>)
+        </ul>
+      </Card>
+      </li>)
   }
 }
 

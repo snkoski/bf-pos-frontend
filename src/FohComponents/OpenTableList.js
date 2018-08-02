@@ -8,9 +8,10 @@ class OpenTableList extends React.Component {
     return(
       <div className="open-tables">
         <h1 style={{
-          textAlign: "center", paddingTop: "10px"
+          textAlign: "center", paddingTop: "10px", color: "#a36167"
         }}>Open Tables</h1>
         <div className="open-cards">
+          {/* {this.props.static_tables.sort((a, b) => a.table_id - b.table_id)} */}
           {this.props.static_tables.map(table => {
             if (table.occupied === false) {
               return <p key={table.id}> Table {table.id}</p>

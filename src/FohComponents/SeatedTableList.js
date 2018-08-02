@@ -25,7 +25,7 @@ renderSeatedTableCards() {
 
       <div>
         <h1 style={{
-          textAlign: "center", paddingTop: "2px"
+          textAlign: "center", paddingTop: "2px", color: "#a36167"
         }}>Seated Tables</h1>
 
 

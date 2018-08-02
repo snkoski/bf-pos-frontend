@@ -42,33 +42,6 @@ state = {
     console.log("TC", tableCustomers);
   }
 
-// removeTable = () => {
-//
-//   let tableCustomers = this.props.customers.filter(customer => {
-//     return customer.table_id === this.props.table.id
-//   })
-// // debugger
-//
-//   this.props.clearTableFetch(this.props.table.id)
-// // debugger
-//   tableCustomers.forEach(customer => {
-//     this.props.removeCustomerFetch(customer.id)
-//   })
-//
-//
-//   this.props.staticClearTableFetch(this.props.table.table_number)
-//
-//
-// }
-
-// this.props.history.push('/')
-// if (this.props.reservations.length > 0 && this.upcomingReservation(this.props.reservations[0])) {
-//   this.checkReservations()
-// }else if (this.props.waitlist.length > 0) {
-// this.checkWaitlist()
-
-
-
   seatCustomer = (numberOfCustomers, table) => {
     for (let i = 0; i < numberOfCustomers; i++) {
       this.props.newCustomerFetch({
@@ -155,19 +128,19 @@ state = {
     // debugger
 console.log("SEATED TABLE CARD: ", this.props);
   return <div key={this.props.table.id + 'div'}>
-    <p key={this.props.table.id}> Table {this.props.table.table_number}</p>
+    <h4 key={this.props.table.id}> Table {this.props.table.table_number}</h4>
 
-    <h4 onClick={this.selectTable}><Link to={`/order/${this.props.table.id}` }>Add Order</Link></h4>
-    
-    <Button onClick={this.show}>Clear</Button>
-    <Modal size='samll' open={this.state.open} onClose={this.close}>
+    <h4 style={{display: "inline"}} onClick={this.selectTable}><Link to={`/order/${this.props.table.id}` }><Button className="table-btn-add">Add Order </Button></Link></h4>
+
+    <Button className="table-btn-clear" onClick={this.show}>Clear</Button>
+    <Modal size='small' open={this.state.open} onClose={this.close}>
       <Modal.Header>Clear Table?</Modal.Header>
       <Modal.Content>
         <p>Clear Table {this.props.table.table_number} and seat next customer?</p>
       </Modal.Content>
       <Modal.Actions>
-        <Button onClick={this.close} negative>No</Button>
-        <Button onClick={this.removeTable}positive icon='checkmark' labelPosition='right' content='Yes' />
+        <Button className="btn-clear-no" onClick={this.close} negative>No</Button>
+        <Button className="btn-clear-yes" onClick={this.removeTable}positive icon='checkmark' labelPosition='right' content='Yes' />
       </Modal.Actions>
     </Modal>
 

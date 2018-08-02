@@ -38,7 +38,7 @@ class ReservationList extends React.Component {
     }
     return(<div>
       <h1 style={{
-        textAlign: "center", paddingTop: "10px"
+        textAlign: "center", paddingTop: "10px", color: "#a36167"
       }}>Reservations</h1>
       <h4 style={{
       textAlign: "center", marginTop: "-15px"}}><Link to='/reservation'>Add Reservation</Link></h4>

@@ -76,6 +76,7 @@
 .whole-div {
   border: 20px solid pink;
   height: 638px;
+  border-radius: 30px;
   /* margin: 15px; */
 }
 
@@ -115,16 +116,56 @@ height: 600
   background-color: #d9a095;
 }
 
-
+.ui.button {
+  background-color: #d9a095;
+}
 
 .seated-cards {
-  max-height: 280px;
+  max-height: 260px;
   height: auto;
   overflow-y: scroll;
   padding-left: 15px;
+  margin-top: -15px;
 }
 .open-cards {
   max-height: 290px;
   overflow-y: scroll;
   padding-left: 15px;
+}
+.ui.form.customer-order {
+  height: auto;
+  border: none;
+}
+.ui.card.customer-card {
+  border: 5px solid #d9a095;
+  border-radius: 10px;
+}
+
+.ui.negative.button.btn-clear-no {
+  background-color: #c64d57;
+}
+
+.ui.button.positive.right.labeled.btn-clear-yes {
+  background-color: #8cd8b6;
+}
+
+.customer-card-list {
+  max-height: 490px;
+  overflow-y: scroll;
+}
+
+.ui.button.table-btn-add {
+  background-color: #8cd8b6;
+}
+
+.ui.button.table-btn-clear {
+  background-color: #e5707a;
+}
+
+.ui.button.waitlist-btn-cancel {
+  background-color: #e5707a;
+}
+
+.ui.button.reservation-btn-cancel {
+  background-color: #e5707a;
 }
