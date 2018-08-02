@@ -1,5 +1,5 @@
-import { USED_INGREDIENTS, CREATE_USED_INGREDIENT } from "./types"
-import {patchFetch, createFetch} from "../adapters/adapters";
+import {USED_INGREDIENTS, CREATE_USED_INGREDIENT} from './types'
+import {patchFetch, createFetch} from '../adapters/adapters';
 
 export const usedIngredientsFetchDataSuccess = (usedIngredients) => {
   return {type: USED_INGREDIENTS, usedIngredients: usedIngredients}

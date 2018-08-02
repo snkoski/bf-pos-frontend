@@ -7,7 +7,7 @@ import {
   CLEAR_TABLE,
   SELECT_TABLE
 } from './types';
-import {patchFetch, createFetch} from "../adapters/adapters";
+import {patchFetch, createFetch} from '../adapters/adapters';
 
 export const staticTableFetch = (tables) => {
   return {type: STATIC_TABLE_FETCH_SUCCESS, static_tables: tables}

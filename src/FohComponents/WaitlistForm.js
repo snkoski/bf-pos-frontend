@@ -1,54 +1,45 @@
-import React from "react";
-import { connect } from "react-redux";
-import { newWaitlistFetch } from "../actions/waitlist";
-import { withRouter } from 'react-router';
-import { Form, Button, Header, Icon, Modal, TextArea } from 'semantic-ui-react'
+import React from 'react';
+import {connect} from 'react-redux';
+import {newWaitlistFetch} from '../actions/waitlist';
+import {withRouter} from 'react-router';
+import {
+  Form,
+  Button,
+  Header,
+  Icon,
+  Modal,
+  TextArea
+} from 'semantic-ui-react';
 
 class WaitlistForm extends React.Component {
 
   state = {
     guest: {
-    guest_name: "",
-    phone_number: "",
-    number_of_guests: "",
-    date: new Date(),
-    start_waitlist: new Date()
-  },
-  modalOpen: false
+      guest_name: "",
+      phone_number: "",
+      number_of_guests: "",
+      date: new Date(),
+      start_waitlist: new Date()
+    },
+    modalOpen: false
   }
-
-  // componentDidMount(){
-  //  this.nameInput.focus();
-  // }
-  //
-  // handleSubmit = (e) => {
-  //
-  //   e.preventDefault()
-  //
-  //   this.props.newWaitlistFetch(this.state)
-  //
-  //   let name = `Waitlist created for ${this.state.guest_name}`
-  //   alert(name)
-  //   this.props.history.push('/')
-  // }
 
   handleMakeWaitlist = () => {
-    // e.preventDefault()
-
-      this.props.newWaitlistFetch(this.state.guest)
-    //   let name = `Reservation created for ${this.state.guest_name}`
-    //   // alert(name)
-      this.props.history.push('/')
+    this.props.newWaitlistFetch(this.state.guest)
+    this.props.history.push('/')
   }
 
-  handleOpen = () => this.setState({ modalOpen: true })
+  handleOpen = () => this.setState({modalOpen: true})
 
-  handleClose = () => this.setState({ modalOpen: false })
+  handleClose = () => this.setState({modalOpen: false})
 
   handleChange = (e) => {
-    this.setState({guest:{...this.state.guest,
-      [e.target.name]: e.target.value
-    }})
+    this.setState({
+      guest: {
+        ...this.state.guest,
+        [e.target.name]: e.target.value
+      }
+    })
   }
 
   render() {
@@ -59,45 +50,56 @@ class WaitlistForm extends React.Component {
         <rect className="rect-right-side" x="830" width="20px" height="100vh"/>
       </svg>
       <div className="form waitlist-form" style={{
-        textAlign: "center"
-      }}>
+          textAlign: "center"
+        }}>
 
         <Form onSubmit={this.handleSubmit}>
 
-          <Form.Input className="waitlist-name" label="Name" name="guest_name" value={this.state.guest.guest_name}
-            onChange={this.handleChange} style={{ width: "60%" }} required />
+          <Form.Input className="waitlist-name" label="Name" name="guest_name" value={this.state.guest.guest_name} onChange={this.handleChange} style={{
+              width: "60%"
+            }} required="required"/>
 
-          <Form.Input label="Number of Guests" type="number" name="number_of_guests"
-            value={this.state.guest.number_of_guests} onChange={this.handleChange} style={{ width: "100px" }} required />
+          <Form.Input label="Number of Guests" type="number" name="number_of_guests" value={this.state.guest.number_of_guests} onChange={this.handleChange} style={{
+              width: "100px"
+            }} required="required"/>
 
-          <Form.Input label="Phone Number" name="phone_number" value={this.state.guest.phone_number}
-            onChange={this.handleChange} style={{ width: "200px" }} required />
+          <Form.Input label="Phone Number" name="phone_number" value={this.state.guest.phone_number} onChange={this.handleChange} style={{
+              width: "200px"
+            }} required="required"/>
 
-          <Modal trigger={<Button disabled={!enabled} onClick={this.handleOpen}>Submit</Button>}  open={this.state.modalOpen}
-            onClose={this.handleClose} basic size='small'>
-            <Header icon='utensils' content='Finalizing Waitlist' />
+          <Modal trigger={<Button disabled = {
+              !enabled
+            }
+            onClick = {
+              this.handleOpen
+            } > Submit</Button>} open={this.state.modalOpen} onClose={this.handleClose} basic="basic" size='small'>
+            <Header icon='utensils' content='Finalizing Waitlist'/>
             <Modal.Content>
               <h3>
-                Adding {this.state.guest.guest_name}      +{this.state.guest.number_of_guests - 1} to waitlist<br/>  Phone: {this.state.guest.phone_number}
+                Adding {this.state.guest.guest_name}
+                +{this.state.guest.number_of_guests - 1}
+                to waitlist<br/>
+                Phone: {this.state.guest.phone_number}
               </h3>
             </Modal.Content>
             <Modal.Actions>
-              <Button onClick={this.handleClose} basic color='red' inverted>
-                <Icon name='remove' /> No
+              <Button onClick={this.handleClose} basic="basic" color='red' inverted="inverted">
+                <Icon name='remove'/>
+                No
               </Button>
-              <Button onClick={this.handleMakeWaitlist} color='green' inverted>
-                <Icon name='checkmark' /> Yes
+              <Button onClick={this.handleMakeWaitlist} color='green' inverted="inverted">
+                <Icon name='checkmark'/>
+                Yes
               </Button>
             </Modal.Actions>
           </Modal>
           <Button onClick={() => {
-            this.props.history.push('/')
-          }} >Back</Button>
+              this.props.history.push('/')
+            }}>Back</Button>
         </Form>
 
       </div>
-    </div>
-)
+    </div>)
   }
 }
 const mapStateToProps = (state) => {

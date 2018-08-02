@@ -1,9 +1,8 @@
 import React from 'react';
-import { connect } from "react-redux";
-import { cancelWaitlistFetch } from "../actions/waitlist";
-import { withRouter } from 'react-router';
-import { Button } from 'semantic-ui-react';
-
+import {connect} from 'react-redux';
+import {cancelWaitlistFetch} from '../actions/waitlist';
+import {withRouter} from 'react-router';
+import {Button} from 'semantic-ui-react';
 
 class WaitlistCard extends React.Component {
 
@@ -16,7 +15,6 @@ class WaitlistCard extends React.Component {
   }
 
   getWaitlistTime = (waitlist) => {
-    // debugger
     let waitlistTime = waitlist.start_waitlist
     let waitlistTimeArray = waitlistTime.slice(11, 16).split(':')
     return (waitlistTimeArray[0] * 60) + (waitlistTimeArray[1] * 1)
@@ -29,21 +27,27 @@ class WaitlistCard extends React.Component {
     let hour = Math.floor(elapsed / 60)
     let min = elapsed % 60
     return hour + ":" + min
-
   }
 
   handleClick = () => {
     this.props.cancelWaitlistFetch(this.props.waitlist.id)
   }
   render() {
-    return(
-      <li>
-        <h3 style={{display: "inline"}}>{this.props.waitlist.guest_name}</h3><br/><h4 style={{display: "inline"}}>{(this.getElapsedWaitlistTime(this.props.waitlist))} - {this.props.waitlist.number_of_guests} Guests</h4>
+    return (<li>
+      <h3 style={{
+          display: "inline"
+        }}>{this.props.waitlist.guest_name}</h3><br/>
+      <h4 style={{
+          display: "inline"
+        }}>{(this.getElapsedWaitlistTime(this.props.waitlist))}
+        - {this.props.waitlist.number_of_guests}
+        Guests</h4>
 
-        <Button className="waitlist-btn-cancel" onClick={this.handleClick}> Cancel </Button>
-      </li>
-    )
+      <Button className="waitlist-btn-cancel" onClick={this.handleClick}>
+        Cancel
+      </Button>
+    </li>)
   }
 }
 
-export default withRouter(connect(null, {cancelWaitlistFetch })(WaitlistCard));
+export default withRouter(connect(null, {cancelWaitlistFetch})(WaitlistCard));

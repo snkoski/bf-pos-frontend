@@ -1,16 +1,15 @@
-import React from "react";
-import {connect} from "react-redux";
-import {withRouter} from "react-router-dom";
-import CustomerCard from "./CustomerCard";
-import {tablesFetchData} from "../actions/tables";
-import { Button } from 'semantic-ui-react';
+import React from 'react';
+import {connect} from 'react-redux';
+import {withRouter} from 'react-router-dom';
+import CustomerCard from './CustomerCard';
+import {tablesFetchData} from '../actions/tables';
+import {Button} from 'semantic-ui-react';
 
 class OrderForm extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      // table_num: parseInt(this.props.match.params.value, 10)
       table_num: this.props.selectedTable.id
     }
   }
@@ -24,21 +23,15 @@ class OrderForm extends React.Component {
       return customer.table_id === this.state.table_num
     })
     tableCustomers.sort((a, b) => a.seat_number - b.seat_number)
-console.log("CUSTOMERS", tableCustomers);
     return tableCustomers.map(customer => {
       return <CustomerCard key={customer.id} customer={customer}/>
     })
   }
 
   render() {
-    console.log("ORDER FORM", this.props);
-    console.log(this.state);
-    console.log("CUSTOMERS", );
-// debugger
     let currentTable = this.props.tables.find(table => {
       return table.id === this.state.table_num
     })
-    // debugger
     return (<div>
       <div className="table-order">
         <svg className="form-svg" viewBox="0 0 850 500" preserveAspectRatio="xMinYMin" width="100%" height="auto">
@@ -46,11 +39,14 @@ console.log("CUSTOMERS", tableCustomers);
           <rect className="rect-right-side" x="830" width="20px" height="100vh"/>
         </svg>
         <h1 style={{
-          textAlign: "center", paddingTop: "10px", fontSize: "30px", color: "#a36167"
-        }}>Table {currentTable.table_number}</h1>
+            textAlign: "center",
+            paddingTop: "10px",
+            fontSize: "30px",
+            color: "#a36167"
+          }}>Table {currentTable.table_number}</h1>
         <Button onClick={() => {
-          this.props.history.push('/')
-        }} >Back</Button>
+            this.props.history.push('/')
+          }}>Back</Button>
       </div>
       <div className="customer-card-list">
         <ul>

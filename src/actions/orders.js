@@ -1,5 +1,5 @@
-import {NEW_ORDER, ORDER_FETCH_DATA_SUCCESS} from "./types";
-import {createFetch} from "../adapters/adapters";
+import {NEW_ORDER, ORDER_FETCH_DATA_SUCCESS} from './types';
+import {createFetch} from '../adapters/adapters';
 
 export const ordersFetchDataSuccess = (orders) => {
   return {type: ORDER_FETCH_DATA_SUCCESS, orders: orders}

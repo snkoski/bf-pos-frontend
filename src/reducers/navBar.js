@@ -1,15 +1,13 @@
-import { CHANGE_TAB, CHANGE_DEPARTMENT } from "../actions/types"
+import {CHANGE_TAB, CHANGE_DEPARTMENT} from '../actions/types'
 
-export function currentTab(state = "tables", action) {
+export function currentTab(state = 'tables', action) {
 
   switch (action.type) {
-     case CHANGE_TAB:
+    case CHANGE_TAB:
       return action.tab;
 
-
-
-       default:
-        return state;
+    default:
+      return state;
   }
 }
 
@@ -18,7 +16,7 @@ export function currentDepartment(state = "foh", action) {
     case CHANGE_DEPARTMENT:
       return action.department;
 
-      default:
-        return state;
+    default:
+      return state;
   }
 }

@@ -1,4 +1,4 @@
-import {RECIPE_FETCH_DATA_SUCCESS} from "./types";
+import {RECIPE_FETCH_DATA_SUCCESS} from './types';
 
 export const recipesfetchdatasuccess = (recipes) => {
   return {type: RECIPE_FETCH_DATA_SUCCESS, recipes: recipes}

@@ -1,52 +1,37 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { staticClearTableFetch, clearTableFetch } from "../actions/tables";
-import { withRouter } from 'react-router-dom';
-
-import SeatedTableCard from "./SeatedTableCard";
+import {connect} from 'react-redux';
+import {staticClearTableFetch, clearTableFetch} from "../actions/tables";
+import {withRouter} from 'react-router-dom';
+import SeatedTableCard from './SeatedTableCard';
 
 class SeatedTableList extends React.Component {
 
-renderSeatedTableCards() {
-  // debugger
-  let filt = this.props.tables.filter(table => {
-    return table.occupied === true
-  })
-  return filt.map(table => {
-    return <SeatedTableCard key={table.id} table={table} />
-  })
+  renderSeatedTableCards() {
+    let filt = this.props.tables.filter(table => {
+      return table.occupied === true
+    })
+    return filt.map(table => {
+      return <SeatedTableCard key={table.id} table={table}/>
+    })
 
-}
+  }
 
   render() {
-
-
-    return(
-
-      <div>
-        <h1 style={{
-          textAlign: "center", paddingTop: "2px", color: "#a36167"
+    return (<div>
+      <h1 style={{
+          textAlign: "center",
+          paddingTop: "2px",
+          color: "#a36167"
         }}>Seated Tables</h1>
-
-
-
-        <div className="seated-cards">
-          {this.renderSeatedTableCards()}
-        </div>
-
+      <div className="seated-cards">
+        {this.renderSeatedTableCards()}
       </div>
-
-          )
+    </div>)
   }
 }
 
 const mapStateToProps = (state) => {
-  return {
-    static_tables: state.static_tables,
-    tables: state.tables,
-    customers: state.customers,
-    orders: state.orders
-  };
+  return {static_tables: state.static_tables, tables: state.tables, customers: state.customers, orders: state.orders};
 };
 
-export default withRouter(connect(mapStateToProps, { staticClearTableFetch, clearTableFetch })(SeatedTableList));
+export default withRouter(connect(mapStateToProps, {staticClearTableFetch, clearTableFetch})(SeatedTableList));

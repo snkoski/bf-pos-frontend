@@ -1,5 +1,12 @@
-import {RESERVATION_HAS_ERRORED, RESERVATION_IS_LOADING, RESERVATIONS_FETCH_DATA_SUCCESS, NEW_RESERVATION, CANCEL_RESERVATION, SEAT_RESERVATION} from "./types";
-import {patchFetch, createFetch} from "../adapters/adapters";
+import {
+  RESERVATION_HAS_ERRORED,
+  RESERVATION_IS_LOADING,
+  RESERVATIONS_FETCH_DATA_SUCCESS,
+  NEW_RESERVATION,
+  CANCEL_RESERVATION,
+  SEAT_RESERVATION
+} from './types';
+import {patchFetch, createFetch} from '../adapters/adapters';
 
 export const reservationsHasErrored = (bool) => {
   return {type: RESERVATION_HAS_ERRORED, hasErrored: bool};

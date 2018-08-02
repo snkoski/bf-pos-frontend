@@ -1,5 +1,5 @@
-import {NEW_CUSTOMER, CUSTOMER_FETCH_DATA_SUCCESS, REMOVE_CUSTOMER} from "./types"
-import {patchFetch, createFetch} from "../adapters/adapters";
+import {NEW_CUSTOMER, CUSTOMER_FETCH_DATA_SUCCESS, REMOVE_CUSTOMER} from './types'
+import {patchFetch, createFetch} from '../adapters/adapters';
 
 export const customerFetchDataSuccess = (customers) => {
   return {type: CUSTOMER_FETCH_DATA_SUCCESS, customers: customers}
